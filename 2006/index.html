@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人主页</title>
+    <title>范晨星的主页</title>
     <style>
-        /* --- CSS 样式部分 --- */
+        /* --- CSS 样式部分：极简且充满活力 --- */
         :root {
-            --bg-color: #f9f9f9;
-            --text-main: #333333;
-            --text-sub: #666666;
-            --accent-color: #2c3e50; /* 深蓝色点缀 */
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-sub: #7f8c8d;
+            --accent-color: #3498db; /* 充满活力的蓝色 */
         }
 
         body {
@@ -26,77 +27,59 @@
         }
 
         .container {
-            max-width: 600px;
+            max-width: 500px;
             width: 100%;
-            background: #ffffff;
+            background: var(--card-bg);
             padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
         }
 
         /* 头像区域 */
         .avatar {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            background-color: #e0e0e0;
             margin: 0 auto 20px;
-            overflow: hidden;
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
+            font-size: 50px;
             color: #fff;
-            background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* 如果没有图片，用渐变色代替 */
+            box-shadow: 0 8px 16px rgba(161, 140, 209, 0.3);
+            border: 4px solid #fff;
         }
-        
-        /* 如果你有图片，取消下面注释并替换src */
-        /* .avatar img { width: 100%; height: 100%; object-fit: cover; } */
 
         h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            font-weight: 600;
+            font-size: 26px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--text-main);
         }
 
         .subtitle {
             color: var(--text-sub);
-            font-size: 14px;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
+            font-size: 15px;
+            margin-bottom: 25px;
+            font-weight: 500;
         }
 
-        /* 简介文本 */
         .bio {
-            line-height: 1.8;
-            color: #444;
+            line-height: 1.7;
+            color: #555;
             margin-bottom: 30px;
             text-align: left;
-        }
-
-        /* 技能标签 */
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 40px;
-        }
-
-        .tag {
-            background: #f0f2f5;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            color: var(--text-sub);
-            transition: all 0.3s ease;
-        }
-
-        .tag:hover {
-            background: var(--accent-color);
-            color: #fff;
-            transform: translateY(-2px);
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
         }
 
         /* 按钮区域 */
@@ -108,34 +91,43 @@
 
         .btn {
             text-decoration: none;
-            padding: 10px 25px;
-            border-radius: 4px;
+            padding: 12px 28px;
+            border-radius: 30px;
             font-size: 14px;
+            font-weight: 600;
             transition: all 0.3s ease;
             cursor: pointer;
-            border: 1px solid transparent;
+            border: none;
+            outline: none;
         }
 
         .btn-primary {
-            background-color: var(--accent-color);
+            background-color: var(--text-main);
             color: #fff;
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
         }
 
         .btn-primary:hover {
-            background-color: #1a252f;
+            background-color: #000;
+            transform: translateY(-2px);
         }
 
         .btn-outline {
-            border-color: #ddd;
+            border: 2px solid #e0e0e0;
             color: var(--text-main);
             background: transparent;
         }
 
         .btn-outline:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
+            border-color: var(--text-main);
+            background: #fff;
         }
 
+        footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #aaa;
+        }
     </style>
 </head>
 <body>
@@ -143,40 +135,32 @@
     <div class="container">
         <!-- 头像 -->
         <div class="avatar">
-            <!-- 这里可以用 <img src="你的照片.jpg"> 替换 -->
             范
         </div>
 
-        <!-- 名字与职位 -->
+        <!-- 名字与身份 -->
         <h1 id="name-display">你好，我是 范晨星</h1>
-        <p class="subtitle">前端开发者 / 极简主义爱好者 / 终身学习者</p>
+        <p class="subtitle">🎓 16岁 / 高中生 / 探索者</p>
 
         <!-- 自我介绍 -->
         <div class="bio">
-            <p>你好！欢迎来到我的个人空间。</p>
-            <p>我热衷于创造简洁、高效的数字体验。平时喜欢研究 Web 技术，偶尔也会写写博客记录生活。我相信代码不仅是逻辑的堆砌，更是一种表达自我的艺术。</p>
-        </div>
-
-        <!-- 技能标签 -->
-        <div class="tags">
-            <span class="tag">HTML/CSS</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">UI Design</span>
-            <span class="tag">Photography</span>
-            <span class="tag">Coffee</span>
+            <p>欢迎来到假想空间</p>
         </div>
 
         <!-- 按钮 -->
         <div class="actions">
-            <a href="#" class="btn btn-primary" onclick="sayHello()">联系我</a>
-            <a href="#" class="btn btn-outline" onclick="toggleBio()">了解更多</a>
+            <button class="btn btn-primary" onclick="showSecret()">输入密码</button>
         </div>
+        
+        <footer>
+            © 2024 Fan Chenxing. All rights reserved.
+        </footer>
     </div>
 
     <script>
         // --- JS 交互部分 ---
 
-        // 简单的打字机效果（可选）
+        // 简单的打字机效果
         const nameElement = document.getElementById('name-display');
         const originalText = nameElement.innerText;
         nameElement.innerText = '';
@@ -186,21 +170,21 @@
             if (i < originalText.length) {
                 nameElement.innerHTML += originalText.charAt(i);
                 i++;
-                setTimeout(typeWriter, 100); // 打字速度
+                setTimeout(typeWriter, 100); 
             }
         }
         
-        // 页面加载完成后启动打字效果
         window.onload = typeWriter;
-
-        // 按钮交互函数
-        function sayHello() {
-            alert('谢谢你的访问！请发送邮件至：your-email@example.com');
+        function showSecret() {
+            const password = prompt('请输入密码：');
+            if (password === null) {
+                return; // 用户取消了输入
+            }
+            if (password.trim() === '2006') {
+                alert('欢迎');
+            } else {alert('想想你是谁');
         }
-
-        function toggleBio() {
-            alert('这里可以跳转到你的详细博客页面，或者展开更多内容。');
-        }
+    }
     </script>
 
 </body>
