@@ -2,15 +2,176 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>News - 范晨星</title>
+    <title>赤魍县官方网站</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f0f2f5; }
-        h1 { color: #2c3e50; }
-        p { color: #555; }
+        /* 全局：浅灰底纹背景 */
+        body { margin: 0; padding: 0; background-color: #e8edf3; font-family: "宋体", sans-serif; font-size: 12px; color: #333; }
+        a { color: #333; text-decoration: none; }
+        a:hover { color: #cc0000; text-decoration: underline; }
+
+        /* 页面总容器 */
+        .container { width: 960px; margin: 0 auto; padding: 10px; }
+
+        /* 顶部 Banner：蓝色渐变背景 */
+        .header {
+            background: linear-gradient(to bottom, #1c55a1 0%, #3a7bd5 100%);
+            padding: 20px 25px;
+            border-bottom: 3px solid #0e3a7a;
+        }
+        .header h1 { font-size: 28px; color: #fff; margin: 0; font-weight: bold; font-family: "黑体", sans-serif; letter-spacing: 2px; }
+        .header p { font-size: 12px; color: #c5d8f0; margin: 5px 0 0 0; }
+
+        /* 导航栏 */
+        .navbar { background-color: #f0f0f0; border-top: 2px solid #1c55a1; padding: 0; margin-bottom: 5px; }
+        .navbar ul { list-style: none; margin: 0; padding: 0; overflow: hidden; }
+        .navbar li { float: left; padding: 8px 15px; border-right: 1px solid #ccc; cursor: pointer; }
+        .navbar li:first-child { background-color: #1c55a1; color: white; }
+        .navbar li:first-child a { color: white; }
+
+        /* 滚动公告栏 */
+        .notice-bar { background: #ffffe6; border: 1px solid #ffcc66; padding: 5px 10px; margin-bottom: 10px; color: #cc3300; }
+
+        /* 主体内容布局 */
+        .main-body { display: flex; gap: 10px; }
+
+        /* 左侧边栏 */
+        .sidebar { width: 250px; flex-shrink: 0; }
+        .module { border: 1px solid #999; margin-bottom: 15px; padding: 5px; background: #fff; }
+        .module-title {
+            background: linear-gradient(to bottom, #8cb8e8, #4a8bd4);
+            color: white;
+            font-weight: bold;
+            padding: 3px 8px;
+            margin: -5px -5px 10px -5px;
+            border-bottom: 1px solid #333;
+        }
+        .sidebar ul { list-style: none; padding: 0 5px; margin: 0; }
+        .sidebar li { padding: 4px 0; border-bottom: 1px dashed #ccc; }
+        .sidebar li a { display: block; }
+        .sidebar li a:before { content: "• "; color: #1c55a1; }
+
+        /* 右侧内容区 */
+        .content { flex-grow: 1; border: 1px solid #999; padding: 10px; background: #fff; }
+        .section-title { border-bottom: 2px solid #1c55a1; color: #1c55a1; font-size: 16px; font-weight: bold; padding-bottom: 5px; margin-bottom: 15px; }
+        .content p { line-height: 1.8; margin-bottom: 15px; text-indent: 2em; }
+
+        /* 表格样式 */
+        .info-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .info-table td { border: 1px solid #ccc; padding: 6px 10px; }
+        .info-table .label { background-color: #f5f5f5; font-weight: bold; width: 80px; }
+
+        /* 页脚 */
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+            padding-top: 15px;
+            color: #666;
+            line-height: 1.8;
+            background: #f0f0f0;
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome to News</h1>
-    <p>这是 news.hypothesis.dpdns.org 的页面，搭建成功！</p>
+
+<div class="container">
+    <!-- 顶部 -->
+    <div class="header">
+        <h1>赤魍县人民政府官方网站</h1>
+        <p>Chiwang County Official Homepage | 探索虚构边陲，感受独特风情</p>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="navbar">
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">乡镇概况</a></li>
+            <li><a href="#">自然风光</a></li>
+            <li><a href="#">人文风情</a></li>
+            <li><a href="#">特产美食</a></li>
+            <li><a href="#">联系我们</a></li>
+        </ul>
+        <div style="clear: both;"></div>
+    </div>
+
+    <!-- 滚动公告 -->
+    <div class="notice-bar">
+        <marquee scrollamount="3" behavior="scroll" direction="left">
+            ★ 公告：赤魍县首届"边陲古镇文化周"将于下月1日正式开幕，届时将有非遗展示、民俗表演等活动，欢迎广大游客前来参观！
+        </marquee>
+    </div>
+
+    <!-- 主体区域 -->
+    <div class="main-body">
+
+        <!-- 左侧边栏 -->
+        <div class="sidebar">
+            <div class="module">
+                <div class="module-title">乡镇概况</div>
+                <ul>
+                    <li>所属：虚构省份</li>
+                    <li>面积：约 280km²</li>
+                    <li>人口：约 4.5万</li>
+                    <li>邮编：000000</li>
+                    <li>气候：亚热带季风气候</li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <div class="module-title">友情链接</div>
+                <ul>
+                    <li><a href="#">虚构省份旅游网</a></li>
+                    <li><a href="#">赤魍河风景区</a></li>
+                    <li><a href="#">虚拟古镇联盟</a></li>
+                    <li><a href="#">周边县市门户</a></li>
+                    <li><a href="#">天气预报</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 右侧内容区 -->
+        <div class="content">
+            <div class="section-title">镇情概况</div>
+            <p>赤魍县，坐落于祖国西南边陲的群山之间，是一个充满独特风情与悠久传说的虚构古镇。这里山清水秀，云雾缭绕，自古以来就是文人墨客笔下的隐世之地。</p>
+            <p>小镇依山傍水而建，赤魍河穿城而过，将县城分为东西两岸。河岸两侧古木参天，吊脚楼错落有致，构成了一幅如诗如画的山水画卷。每当清晨，薄雾笼罩河面，渔舟唱晚，宛如世外桃源。</p>
+
+            <div class="section-title" style="margin-top: 25px;">基础数据</div>
+            <table class="info-table">
+                <tr>
+                    <td class="label">地理位置</td>
+                    <td>虚构省份西南部，赤魍河中游</td>
+                </tr>
+                <tr>
+                    <td class="label">总面积</td>
+                    <td>约 280 平方公里</td>
+                </tr>
+                <tr>
+                    <td class="label">总人口</td>
+                    <td>约 4.5 万人（虚拟统计数据）</td>
+                </tr>
+                <tr>
+                    <td class="label">气候类型</td>
+                    <td>亚热带季风气候，年均温 16℃</td>
+                </tr>
+                <tr>
+                    <td class="label">主要民族</td>
+                    <td>虚构多民族聚居</td>
+                </tr>
+                <tr>
+                    <td class="label">著名特产</td>
+                    <td>赤魍老茶、野生菌菇、手工织锦、古法酿醋</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        Copyright © 2006 赤魍县人民政府 All Rights Reserved.<br>
+        建议使用 IE 6.0 以上浏览器，800x600 分辨率浏览本站<br>
+        您是第 003,847 位访客
+    </div>
+</div>
+
 </body>
 </html>
