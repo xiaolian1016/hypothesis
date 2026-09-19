@@ -258,7 +258,7 @@
         <div class="search-panel" id="searchPanel">
             <div class="search-inner">
                 <input type="text" id="searchInput" placeholder="输入关键词搜索..." />
-                <button type="button" onclick="alert('提示：当前为演示页面，搜索功能暂未接入后端服务。')">搜 索</button>
+                <button type="button" id="searchBtn">搜 索</button>
             </div>
             <span class="search-close" id="searchClose" title="关闭搜索">✕</span>
         </div>
@@ -293,7 +293,7 @@
                         <li><a href="country.html">行政区划图</a></li>
                         <li><a href="country.html">各乡镇详细数据</a></li>
                         <li><a href="culture.html">历史沿革</a></li>
-                        <li><a href="culture.html">领导班子</a></li>
+                        <li><a href="lingdao.html">领导班子</a></li>
                     </ul>
                 </div>
             </div>
@@ -341,10 +341,98 @@
     var homeBtn = document.getElementById('homeBtn');
     var searchPanel = document.getElementById('searchPanel');
     var searchClose = document.getElementById('searchClose');
+    var searchInput = document.getElementById('searchInput');
+    var searchBtn = document.getElementById('searchBtn');
     var clickCount = 0;
     var clickTimer = null;
     var CLICK_INTERVAL = 800;
 
+    // ========== 搜索关键词 → 页面跳转映射 ==========
+    // 带 password 字段的条目为加密词条，需校验密码后方可跳转
+    var searchRules = [
+        {
+            keywords: ['陈守仁'],
+            page: 'chenshouren.html',
+            hint: '赤魍县的口号是',
+            password: '探索虚构边缘，感受独特风情'
+        },
+        {
+            keywords: ['乡镇', '概况', '行政区划', '面积', '人口', 'GDP', '经济'],
+            page: 'country.html'
+        },
+        {
+            keywords: ['自然', '风光', '风景', '景区', '保护区', '山水', '旅游'],
+            page: 'sight.html'
+        },
+        {
+            keywords: ['人文', '风情', '文化', '历史', '民俗', '手工艺', '酿醋', '织锦', '龙灯', '山歌', '染布', '非遗'],
+            page: 'culture.html'
+        },
+        {
+            keywords: ['联系', '电话', '地址', '邮箱', '办公'],
+            page: 'contact.html'
+        },
+        {
+            keywords: ['公告', '通知', '公示', '报告'],
+            page: 'notice.html'
+        },
+        {
+            keywords: ['周明远'],
+            page: 'lingdao.html'
+        }
+    ];
+
+    // 执行搜索：匹配关键词后跳转对应页面
+    function doSearch() {
+        var query = searchInput.value.trim();
+        if (!query) {
+            alert('请输入搜索关键词。');
+            return;
+        }
+
+        // 逐条规则匹配，输入内容包含任一关键词即跳转
+        for (var i = 0; i < searchRules.length; i++) {
+            var rule = searchRules[i];
+            for (var j = 0; j < rule.keywords.length; j++) {
+                if (query.indexOf(rule.keywords[j]) !== -1) {
+
+                    // 加密词条：需输入密码
+                    if (rule.password) {
+                        var input = prompt('该词条已加密。\n\n提示：' + rule.hint + '？\n\n请输入密码：');
+                        if (input === null) return;              // 用户取消
+                        if (input.trim() === rule.password) {
+                            window.location.href = rule.page;     // 密码正确
+                        } else {
+                            alert('密码错误，无法查阅该词条。');   // 密码错误
+                        }
+                        return;
+                    }
+
+                    window.location.href = rule.page;
+                    return;
+                }
+            }
+        }
+
+        // 未匹配到任何规则
+        alert('未找到与"' + query + '"相关的内容页面。\n\n可尝试搜索：乡镇概况、自然风光、人文风情、联系我们 等。');
+    }
+
+    // 搜索按钮点击
+    searchBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        doSearch();
+    });
+
+    // 输入框回车键触发搜索
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            doSearch();
+        }
+    });
+
+    // ========== 三次点击"首页"显示搜索栏 ==========
     homeBtn.addEventListener('click', function(e) {
         e.preventDefault();
         clickCount++;
@@ -352,7 +440,7 @@
 
         if (clickCount >= 3) {
             searchPanel.classList.add('show');
-            document.getElementById('searchInput').focus();
+            searchInput.focus();
             clickCount = 0;
             return;
         }
