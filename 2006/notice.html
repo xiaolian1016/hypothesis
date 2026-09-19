@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>关于赤魍县2026年度乡镇经济发展报告的公示通知 - 赤魍县人民政府官方网站</title>
+    <title>乡镇概况 - 赤魍县人民政府官方网站</title>
     <style>
         /* ================= 全局设置 ================= */
         body { 
@@ -23,42 +23,40 @@
             padding: 10px; 
         }
 
-        /* ================= 顶部 Banner（高度精简） ================= */
+        /* ================= 顶部 Banner ================= */
         .header {
             background: linear-gradient(to bottom, #1c55a1 0%, #3a7bd5 100%);
-            padding: 15px 25px;
+            padding: 20px 25px;
             border-bottom: 3px solid #0e3a7a;
         }
         .header h1 { 
-            font-size: 24px; 
+            font-size: 26px; 
             color: #fff; 
             margin: 0; 
             font-weight: bold; 
             font-family: "黑体", sans-serif; 
             letter-spacing: 2px; 
-            line-height: 1.2;
         }
         .header p { 
             font-size: 12px; 
             color: #c5d8f0; 
-            margin: 4px 0 0 0; 
-            line-height: 1.2;
+            margin: 5px 0 0 0; 
         }
 
-        /* ================= 导航栏（紧凑化） ================= */
+        /* ================= 导航栏 ================= */
         .navbar {
             background-color: #f0f2f5;
             border-bottom: 2px solid #1c55a1;
-            height: 36px;
+            height: 38px;
             display: flex;
             align-items: center;
             padding: 0 10px;
         }
         .navbar a {
             display: inline-block;
-            padding: 0 20px;
-            height: 36px;
-            line-height: 36px;
+            padding: 0 22px;
+            height: 38px;
+            line-height: 38px;
             font-size: 14px;
             font-family: "宋体", sans-serif;
             color: #333;
@@ -76,15 +74,16 @@
             color: #fff;
         }
 
-        /* ================= 公告栏（高度统一） ================= */
+        /* ================= 公告栏 ================= */
         .notice-bar {
             background-color: #fffde6;
             border: 1px solid #e0c070;
             border-top: none;
-            height: 30px;
-            line-height: 30px;
+            height: 32px;
+            line-height: 32px;
             padding: 0 10px;
             margin: 0;
+            position: relative;
             overflow: hidden;
         }
         .notice-bar .notice-label {
@@ -100,16 +99,20 @@
             color: #cc0000;
             font-size: 12px;
             white-space: nowrap;
-            max-width: 800px;
+            max-width: 780px;
             overflow: hidden;
+        }
+        .notice-bar .notice-more {
+            float: right;
+            color: #cc0000;
+            font-size: 12px;
         }
 
         /* ================= 主体双栏布局 ================= */
         .main-content {
             display: flex;
-            margin-top: 8px;
-            gap: 8px;
-            padding: 0 0 8px 0;
+            margin-top: 10px;
+            gap: 10px;
         }
 
         /* ---- 左侧栏 ---- */
@@ -120,21 +123,35 @@
         .sidebar-box {
             background-color: #fff;
             border: 1px solid #a8b9d0;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         .sidebar-title {
             background: linear-gradient(to bottom, #5b9bd5 0%, #3578c6 100%);
             color: #fff;
             font-size: 13px;
             font-weight: bold;
-            padding: 5px 10px;
+            padding: 6px 10px;
             font-family: "宋体", sans-serif;
-            line-height: 1.3;
         }
-        .sidebar-body { padding: 6px 10px; }
-        .sidebar-body ul { list-style: disc; padding-left: 20px; margin: 0; }
-        .sidebar-body li { line-height: 24px; font-size: 12px; }
+        .sidebar-body {
+            padding: 8px 10px;
+        }
+        .sidebar-body ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
+        .sidebar-body li {
+            line-height: 26px;
+            font-size: 12px;
+        }
+        .sidebar-body p {
+            line-height: 22px;
+            margin: 3px 0;
+            font-size: 12px;
+        }
 
+        /* 核心指标速览样式 */
         .index-item {
             display: flex;
             justify-content: space-between;
@@ -151,130 +168,79 @@
             flex: 1;
             background-color: #fff;
             border: 1px solid #a8b9d0;
-            padding: 12px 18px;
-            min-height: 480px;
+            padding: 15px 20px;
+            min-height: 500px;
         }
-
-        /* === 通知专属样式 === */
-        .notice-header {
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
-            margin-bottom: 12px;
-        }
-        .notice-header h2 {
+        .content-area h2 {
             font-size: 18px;
-            color: #cc0000;
-            margin: 0 0 6px 0;
+            color: #1c55a1;
+            margin-top: 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
             font-family: "黑体", sans-serif;
-            line-height: 1.3;
         }
-        .notice-meta {
-            font-size: 12px;
-            color: #666;
-            display: flex;
-            justify-content: center;
-            gap: 18px;
-            flex-wrap: wrap;
-        }
-
-        .notice-body p {
-            line-height: 22px;
+        .content-area p {
+            line-height: 24px;
             text-indent: 2em;
-            margin: 8px 0;
+            margin: 10px 0;
             text-align: justify;
         }
-        .notice-body strong { color: #0e3a7a; }
 
-        .highlight-box {
-            background: #fffde6;
-            border-left: 3px solid #cc0000;
-            padding: 8px 12px;
-            margin: 12px 0;
+        /* 图片展示区 */
+        .img-gallery {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .img-card {
+            flex: 1;
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 5px;
+            background: #fafafa;
+        }
+        .img-card .img-placeholder {
+            width: 100%;
+            height: 150px;
+            background-color: #e8edf3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
             font-size: 12px;
-            line-height: 20px;
+            border: 1px dashed #ccc;
         }
-        .highlight-box strong { color: #cc0000; }
-
-        .contact-box {
-            background: #f8fafd;
-            border: 1px solid #a8b9d0;
-            padding: 8px 12px;
-            margin: 12px 0;
+        .img-card .img-caption {
             font-size: 12px;
-        }
-        .contact-box h4 {
-            margin: 0 0 4px 0;
-            font-size: 12px;
-            color: #1c55a1;
-        }
-        .contact-box p { 
-            text-indent: 0 !important; 
-            margin: 2px 0 !important; 
-            line-height: 18px !important;
-        }
-
-        .attachments { margin: 12px 0; }
-        .attachments h4 {
-            font-size: 12px;
-            color: #1c55a1;
-            margin: 0 0 6px 0;
-        }
-        .attach-link {
-            display: inline-block;
-            padding: 3px 10px;
-            background: #eaf0f8;
-            border: 1px solid #a8b9d0;
-            margin-right: 6px;
-            margin-bottom: 5px;
-            font-size: 12px;
-            color: #1c55a1;
-        }
-        .attach-link:hover {
-            background: #1c55a1;
-            color: #fff;
-            text-decoration: none;
+            color: #555;
+            padding: 5px 0;
         }
 
-        .seal-area {
-            text-align: right;
-            margin-top: 30px;
-            padding-right: 15px;
-            position: relative;
-        }
-        .seal-stamp::after {
-            content: "★";
-            display: block;
-            font-size: 18px;
-            margin-top: 1px;
-        }
-        .seal-area .dept { font-size: 13px; font-weight: bold; margin-bottom: 2px; }
-        .seal-area .date { font-size: 12px; color: #666; }
-
+        /* 数据表格 */
         .data-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 12px 0;
+            margin-top: 15px;
             font-size: 12px;
         }
         .data-table th {
             background-color: #eaf0f8;
             border: 1px solid #a8b9d0;
-            padding: 5px 8px;
-            text-align: center;
+            padding: 6px 10px;
+            text-align: left;
             font-weight: bold;
             color: #1c55a1;
             white-space: nowrap;
         }
         .data-table td {
             border: 1px solid #ccc;
-            padding: 5px 8px;
-            text-align: center;
+            padding: 6px 10px;
         }
-        .data-table tr:nth-child(even) { background-color: #f8fafd; }
-        .data-table .rank-1 { color: #cc0000; font-weight: bold; }
+        .data-table tr:nth-child(even) {
+            background-color: #f8fafd;
+        }
 
-        /* ================= 页脚（紧凑化） ================= */
+        /* ================= 页脚 ================= */
         .footer {
             text-align: center;
             padding: 15px 0;
@@ -286,28 +252,28 @@
     </style>
 </head>
 <body>
-
 <div class="container">
 
-    <!-- ====== 顶部 Banner ====== -->
+ <!-- ====== 顶部 Banner ====== -->
     <div class="header">
         <h1>赤魍县人民政府官方网站</h1>
         <p>ChiWang County Official Homepage | 探索虚构边缘，感受独特风情</p>
     </div>
 
-    <!-- ====== 导航栏 ====== -->
+    <!-- ====== 导航栏（带页面跳转） ====== -->
     <nav class="navbar">
         <a href="index.html">首页</a>
         <a href="country.html">乡镇概况</a>
-        <a href="sight.html">自然风光</a>
+        <a href="sight.html" class="active">自然风光</a>
         <a href="culture.html">人文风情</a>
         <a href="contact.html">联系我们</a>
     </nav>
 
-    <!-- ====== 公告栏 ====== -->
+    <!-- ====== 公告栏（已修复错位） ====== -->
     <div class="notice-bar">
         <span class="notice-label">★ 公告：</span>
-        <span class="notice-content">关于赤魍县2026年度乡镇经济发展报告的公示通知现已发布，请社会各界查阅监督。</span>
+        <span class="notice-content">关于赤魍县2026年度乡镇经济发展报告公示通知...</span>
+        <a href="notice.html" class="notice-more">关于</a>
     </div>
 
     <!-- ====== 主体双栏 ====== -->
@@ -315,30 +281,20 @@
 
         <!-- 左侧栏 -->
         <aside class="sidebar">
+
+            <!-- 核心指标速览 -->
             <div class="sidebar-box">
                 <div class="sidebar-title">核心指标速览</div>
                 <div class="sidebar-body">
                     <div class="index-item"><span class="label">辖区总面积：</span><span class="value">280 km²</span></div>
                     <div class="index-item"><span class="label">常住人口：</span><span class="value">4.5 万人</span></div>
                     <div class="index-item"><span class="label">下辖乡镇：</span><span class="value">5 镇 3 乡</span></div>
-                    <div class="index-item"><span class="label">GDP总值：</span><span class="value">230.0 亿元</span></div>
+                    <div class="index-item"><span class="label">GDP总值：</span><span class="value">12.8 亿元</span></div>
                     <div class="index-item"><span class="label">森林覆盖率：</span><span class="value">68%</span></div>
                 </div>
             </div>
 
-            <div class="sidebar-box">
-                <div class="sidebar-title">政务公开专栏</div>
-                <div class="sidebar-body">
-                    <ul>
-                        <li><a href="#">政府信息公开指南</a></li>
-                        <li><a href="#">财政预决算公开</a></li>
-                        <li><a href="#">重大项目公示</a></li>
-                        <li><a href="#">惠民政策汇编</a></li>
-                        <li><a href="#">县长信箱</a></li>
-                    </ul>
-                </div>
-            </div>
-
+            <!-- 友情链接 -->
             <div class="sidebar-box">
                 <div class="sidebar-title">友情链接</div>
                 <div class="sidebar-body">
@@ -350,144 +306,42 @@
                     </ul>
                 </div>
             </div>
+            
         </aside>
 
-        <!-- 右侧内容区 -->
         <main class="content-area">
-            
-            <div class="notice-header">
-                <h2>关于赤魍县2026年度乡镇经济发展报告的公示通知</h2>
-                <div class="notice-meta">
-                    <span>文号：赤政发〔2026〕47号</span>
-                    <span>发布机构：赤魍县发展和改革局</span>
-                    <span>发布日期：2026-09-15</span>
-                    <span>【主动公开】</span>
+      <h2 class="content-title">自然风光</h2>
+
+      <p>赤魍县地处本省西南部山区，地势西北高、东南低，独特的地形地貌孕育了丰富的自然景观资源。境内山川纵横、水系发达，森林覆盖率高达68%，拥有国家级自然保护区1处、省级风景名胜区2处，是生态旅游与户外探索的理想之地。</p>
+
+      <p>县域内最具代表性的自然景观为<strong>赤蟒河风景区</strong>——河水发源于西北高山峡谷，蜿蜒流经全县，形成"峡谷幽深、碧水含烟"的独特风貌。沿河分布的原始次生林、珍稀动植物群落（如国家一级保护植物红豆杉、二级保护动物白鹇等），构成完整的生态链；河畔的梯田景观随四季更迭呈现"春绿、夏翠、秋金、冬素"的色彩变化，成为摄影爱好者的打卡胜地。</p>
+
+      <p>此外，<strong>云雾山省级风景名胜区</strong>以"云海、奇峰、古木"为核心特色：主峰海拔超1500米，常年云雾缭绕，山间怪石嶙峋、古木参天，春季杜鹃花海漫山遍野，秋季红叶层林尽染；山脚下的<strong>枫林镇古银杏群落</strong>更是千年奇观，百余株古银杏树龄超300年，秋日金黄叶片铺满村落，与徽派建筑相映成趣。</p>
+
+      <p>依托生态优势，赤魍县已建成多条自然观光线路：赤蟒河漂流、云雾山徒步、古银杏村摄影等业态成熟，配套民宿、观景台等设施完善，让游客既能沉浸式感受自然野趣，又能享受舒适的旅行体验。</p>
+
+      <!-- 三图展示区 -->
+     <div class="img-gallery">
+       <div class="img-card">
+                    <div class="img-placeholder">[赤蟒河风光图片]</div>
+                    <div class="img-caption">赤蟒河峡谷——碧水绕青山</div>
                 </div>
-            </div>
-
-            <div class="notice-body">
-                <p>各乡镇人民政府、街道办事处，县直各有关单位：</p>
-
-                <p>根据《中华人民共和国政府信息公开条例》及《赤魍县乡镇经济发展考核评价办法（2025年修订版）》相关规定，为全面反映我县2026年度各乡镇经济社会发展成效，增强政务透明度，接受社会监督，现将<strong>赤魍县2026年度各乡镇经济发展主要指标完成情况</strong>予以公示。</p>
-
-                <p>本次公示数据已经县统计局审核确认，涵盖地区生产总值（GDP）、规模以上工业总产值、农林牧渔业总产值、固定资产投资增速、一般公共预算收入及农村居民人均可支配收入等六项核心经济指标。具体数据如下：</p>
-
-                <table class="data-table">
-                    <tr>
-                        <th>排名</th>
-                        <th>乡镇名称</th>
-                        <th>GDP(亿元)</th>
-                        <th>规上工业产值(亿元)</th>
-                        <th>农业总产值(亿元)</th>
-                        <th>固投增速(%)</th>
-                        <th>一般公共预算收入(万元)</th>
-                    </tr>
-                    <tr>
-                        <td class="rank-1">1</td>
-                        <td>城关镇</td>
-                        <td class="rank-1">58.6</td>
-                        <td>42.3</td>
-                        <td>3.8</td>
-                        <td>+12.5</td>
-                        <td>18,650</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>临江街道</td>
-                        <td>47.2</td>
-                        <td>38.7</td>
-                        <td>2.1</td>
-                        <td>+10.8</td>
-                        <td>15,320</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>青石镇</td>
-                        <td>35.8</td>
-                        <td>28.4</td>
-                        <td>6.5</td>
-                        <td>+9.2</td>
-                        <td>11,780</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>云岭乡</td>
-                        <td>28.4</td>
-                        <td>15.6</td>
-                        <td>9.2</td>
-                        <td>+8.7</td>
-                        <td>8,450</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>桃源镇</td>
-                        <td>24.1</td>
-                        <td>12.8</td>
-                        <td>8.7</td>
-                        <td>+7.3</td>
-                        <td>7,230</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>白石乡</td>
-                        <td>19.6</td>
-                        <td>8.5</td>
-                        <td>7.4</td>
-                        <td>+6.8</td>
-                        <td>5,860</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>河口镇</td>
-                        <td>16.3</td>
-                        <td>6.2</td>
-                        <td>5.9</td>
-                        <td>+5.4</td>
-                        <td>4,520</td>
-                    </tr>
-                    <tr style="background:#eaf0f8; font-weight:bold;">
-                        <td colspan="2">全县合计</td>
-                        <td>230.0</td>
-                        <td>152.5</td>
-                        <td>43.6</td>
-                        <td>+8.6</td>
-                        <td>71,810</td>
-                    </tr>
-                </table>
-
-                <div class="highlight-box">
-                    <strong>⏰ 公示期限：</strong>2026年9月15日 至 2026年9月25日（共10个工作日）。<br>
-                    公示期间，任何单位和个人如对公示数据有异议，可通过以下方式向县发展和改革局实名反映。反映情况须客观真实，以单位名义反映的应加盖公章，以个人名义反映的应署真实姓名和联系方式。匿名反映不予受理。
+                <div class="img-card">
+                    <div class="img-placeholder">[云雾山云海奇峰图片]</div>
+                    <div class="img-caption">云雾山胜境——云海伴奇峰</div>
                 </div>
-
-                <div class="contact-box">
-                    <h4>📞 监督联系方式</h4>
-                    <p><strong>监督电话：</strong>0578-8826300（工作日 8:30-17:30）</p>
-                    <p><strong>电子邮箱：</strong>cmfgj@chimang.gov.cn</p>
-                    <p><strong>来信地址：</strong>赤魍县城关镇人民路168号 县发改局综合科（邮编：323800）</p>
-                    <p><strong>接待来访：</strong>县行政服务中心3楼302室</p>
+                <div class="img-card">
+                    <div class="img-placeholder">[枫林镇古银杏群落图片]</div>
+                    <div class="img-caption">千年银杏——古村映金黄</div>
                 </div>
-
-                <p>特此公示。</p>
-
-                <div class="attachments">
-                    <h4>📎 相关附件下载：</h4>
-                    <a href="#" class="attach-link">📕 赤魍县2026年度乡镇经济发展报告（完整版）.pdf</a>
-                    <a href="#" class="attach-link">📊 各乡镇经济指标明细表.xlsx</a>
-                    <a href="#" class="attach-link">📋 异议反馈表（模板）.docx</a>
-                </div>
-            </div>
-
-        </main>
+      </div>
     </div>
-
-    <!-- ====== 页脚 ====== -->
-    <div class="footer">
+  <!-- 页脚 -->
+  <div class="footer">
         Copyright © 2006 赤魍县人民政府 All Rights Reserved<br>
         建议使用 IE 6.0 以上浏览器，800x600 分辨率浏览本站<br>
         您是第 003,847 位访客
     </div>
-
 </div>
 
 </body>
