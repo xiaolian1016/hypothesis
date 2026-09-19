@@ -171,6 +171,29 @@
             min-height: 500px;
         }
 
+        /* === 返回按钮样式 === */
+        .back-btn-wrap {
+            margin-bottom: 8px;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 4px 14px;
+            background: linear-gradient(to bottom, #f8fafd 0%, #eaf0f8 100%);
+            border: 1px solid #a8b9d0;
+            color: #1c55a1;
+            font-size: 12px;
+            font-family: "宋体", sans-serif;
+            text-decoration: none;
+            line-height: 18px;
+            cursor: pointer;
+        }
+        .back-btn:hover {
+            background: linear-gradient(to bottom, #1c55a1 0%, #0e3a7a 100%);
+            color: #fff;
+            text-decoration: none;
+            border-color: #0e3a7a;
+        }
+
         /* 新闻标题区 */
         .article-title {
             font-size: 20px;
@@ -374,6 +397,11 @@
         <!-- 右侧内容区 -->
         <main class="content-area">
             
+            <!-- ★ 返回按钮 ★ -->
+            <div class="back-btn-wrap">
+                <a href="index.html" class="back-btn">◀ 返回首页</a>
+            </div>
+
             <h1 class="article-title">关于赤魍县境内发现无名男尸的情况通报</h1>
             <div class="article-meta">
                 <span>来源：赤魍县公安局</span>
