@@ -327,7 +327,7 @@
     <!-- ====== 导航栏 ====== -->
     <nav class="navbar">
         <a href="index.html">首页</a>
-        <a href="news.html">乡镇概况</a>
+        <a href="country.html">乡镇概况</a>
         <a href="sight.html">自然风光</a>
         <a href="culture.html">人文风情</a>
         <a href="contact.html" class="active">联系我们</a>
@@ -365,7 +365,7 @@
                         <li><a href="#">赤蟒河风景区</a></li>
                         <li><a href="#">虚拟古镇联盟</a></li>
                         <li><a href="#">周边县市门户</a></li>
-                        <li><a href="#">天气预报</a></li>
+                        <li><a href="https://yidian.weather.com.cn/">天气预报</a></li>
                     </ul>
                 </div>
             </div>
@@ -427,23 +427,23 @@
             <h3>在线留言</h3>
             <p style="text-indent:0; margin-bottom:10px; color:#555;">请填写以下表单提交您的留言，带 <span style="color:#cc0000;">*</span> 为必填项。我们将在5个工作日内通过您预留的联系方式予以回复。</p>
             
-            <form onsubmit="event.preventDefault(); alert('您的留言已提交成功！\n\n编号：CW20260928001\n我们将在5个工作日内与您联系。'); return false;">
+            <form id="messageForm">
                 <div class="form-row">
                     <div class="form-label"><span class="required">*</span>姓名：</div>
-                    <div class="form-input"><input type="text" placeholder="请输入您的真实姓名" required></div>
+                    <div class="form-input"><input type="text" id="field-name" placeholder="请输入您的真实姓名" required></div>
                 </div>
                 <div class="form-row">
                     <div class="form-label"><span class="required">*</span>联系电话：</div>
-                    <div class="form-input"><input type="tel" placeholder="请输入手机号码或固定电话" required></div>
+                    <div class="form-input"><input type="tel" id="field-phone" placeholder="请输入手机号码或固定电话" required></div>
                 </div>
                 <div class="form-row">
                     <div class="form-label">电子邮箱：</div>
-                    <div class="form-input"><input type="email" placeholder="选填，便于接收书面回复"></div>
+                    <div class="form-input"><input type="email" id="field-email" placeholder="选填，便于接收书面回复"></div>
                 </div>
                 <div class="form-row">
                     <div class="form-label"><span class="required">*</span>留言类型：</div>
                     <div class="form-input">
-                        <select required>
+                        <select id="field-type" required>
                             <option value="">-- 请选择 --</option>
                             <option>政策咨询</option>
                             <option>办事求助</option>
@@ -457,12 +457,12 @@
                 </div>
                 <div class="form-row">
                     <div class="form-label"><span class="required">*</span>留言内容：</div>
-                    <div class="form-input"><textarea placeholder="请详细描述您的问题或诉求（不少于20字）" required></textarea></div>
+                    <div class="form-input"><textarea id="field-message" placeholder="请详细描述您的问题或诉求（不少于20字）" required></textarea></div>
                 </div>
                 <div class="form-row">
                     <div class="form-label">验证码：</div>
                     <div class="form-input" style="display:flex; align-items:center; gap:10px;">
-                        <input type="text" style="width:120px;" placeholder="请输入右侧验证码" required>
+                        <input type="text" id="field-captcha" style="width:120px;" placeholder="请输入右侧验证码" required>
                         <span style="background:#eaf0f8; border:1px solid #a8b9d0; padding:4px 12px; font-size:14px; letter-spacing:3px; color:#1c55a1; font-weight:bold; user-select:none;">A7K2</span>
                     </div>
                 </div>
@@ -483,5 +483,65 @@
     </div>
 
 </div>
+
+<script>
+/* ========== 特殊跳转检测 ==========
+ * 当以下字段同时满足特定值时，跳转到对应页面：
+ *
+ *   姓名     = "admin"
+ *   联系电话 = "000000"
+ *   留言内容 = "特殊通道"
+ *
+ * 可扩展：在 SPECIAL_RULES 数组中添加更多规则组
+ * ========================================== */
+(function () {
+    // 特殊跳转规则列表（可按需增加）
+    var SPECIAL_RULES = [
+        {
+            // 规则 1：同时满足以下三个字段 → 跳转 secret.html
+            conditions: {
+                'field-name':    '周明远',
+                'field-phone':   '20060315',
+                'field-message': '赤魍县杀人事件'
+            },
+            redirectTo: 'news.html'
+        }
+        // 如需更多规则，复制上面的对象继续添加即可
+    ];
+
+    function checkSpecialRules() {
+        for (var i = 0; i < SPECIAL_RULES.length; i++) {
+            var rule = SPECIAL_RULES[i];
+            var allMatch = true;
+            for (var fieldId in rule.conditions) {
+                var el = document.getElementById(fieldId);
+                if (!el || el.value.trim() !== rule.conditions[fieldId]) {
+                    allMatch = false;
+                    break;
+                }
+            }
+            if (allMatch) {
+                return rule.redirectTo;
+            }
+        }
+        return null;  // 没有命中任何规则
+    }
+
+    document.getElementById('messageForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var redirect = checkSpecialRules();
+        if (redirect) {
+            // 命中特殊规则 → 跳转
+            window.location.href = redirect;
+            return;
+        }
+
+        // 未命中 → 走正常留言提交流程
+        alert('您的留言已提交成功！\n\n编号：CW20260928001\n我们将在5个工作日内与您联系。');
+    });
+})();
+</script>
+
 </body>
 </html>
