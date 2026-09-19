@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>乡镇概况 - 赤魍县人民政府官方网站</title>
+    <style>
+        /* ================= 全局设置 ================= */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background-color: #e8edf3; 
+            font-family: "宋体", sans-serif; 
+            font-size: 12px; 
+            color: #333; 
+        }
+        a { color: #333; text-decoration: none; }
+        a:hover { color: #cc0000; text-decoration: underline; }
+
+        /* ================= 页面总容器 ================= */
+        .container { 
+            width: 960px; 
+            margin: 0 auto; 
+            padding: 10px; 
+        }
+
+        /* ================= 顶部 Banner ================= */
+        .header {
+            background: linear-gradient(to bottom, #1c55a1 0%, #3a7bd5 100%);
+            padding: 20px 25px;
+            border-bottom: 3px solid #0e3a7a;
+        }
+        .header h1 { 
+            font-size: 26px; 
+            color: #fff; 
+            margin: 0; 
+            font-weight: bold; 
+            font-family: "黑体", sans-serif; 
+            letter-spacing: 2px; 
+        }
+        .header p { 
+            font-size: 12px; 
+            color: #c5d8f0; 
+            margin: 5px 0 0 0; 
+        }
+
+        /* ================= 导航栏 ================= */
+        .navbar {
+            background-color: #f0f2f5;
+            border-bottom: 2px solid #1c55a1;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .navbar a {
+            display: inline-block;
+            padding: 0 22px;
+            height: 38px;
+            line-height: 38px;
+            font-size: 14px;
+            font-family: "宋体", sans-serif;
+            color: #333;
+            border-right: 1px solid #ccc;
+            text-align: center;
+        }
+        .navbar a:first-child { border-left: 1px solid #ccc; }
+        .navbar a:hover {
+            background-color: #1c55a1;
+            color: #fff;
+            text-decoration: none;
+        }
+        .navbar a.active {
+            background-color: #1c55a1;
+            color: #fff;
+        }
+
+        /* ================= 公告栏 ================= */
+        .notice-bar {
+            background-color: #fffde6;
+            border: 1px solid #e0c070;
+            border-top: none;
+            height: 32px;
+            line-height: 32px;
+            padding: 0 10px;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .notice-bar .notice-label {
+            float: left;
+            color: #cc0000;
+            font-weight: bold;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .notice-bar .notice-content {
+            float: left;
+            margin-left: 10px;
+            color: #cc0000;
+            font-size: 12px;
+            white-space: nowrap;
+            max-width: 780px;
+            overflow: hidden;
+        }
+        .notice-bar .notice-more {
+            float: right;
+            color: #cc0000;
+            font-size: 12px;
+        }
+
+        /* ================= 主体双栏布局 ================= */
+        .main-content {
+            display: flex;
+            margin-top: 10px;
+            gap: 10px;
+        }
+
+        /* ---- 左侧栏 ---- */
+        .sidebar {
+            width: 220px;
+            flex-shrink: 0;
+        }
+        .sidebar-box {
+            background-color: #fff;
+            border: 1px solid #a8b9d0;
+            margin-bottom: 10px;
+        }
+        .sidebar-title {
+            background: linear-gradient(to bottom, #5b9bd5 0%, #3578c6 100%);
+            color: #fff;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 6px 10px;
+            font-family: "宋体", sans-serif;
+        }
+        .sidebar-body {
+            padding: 8px 10px;
+        }
+        .sidebar-body ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
+        .sidebar-body li {
+            line-height: 26px;
+            font-size: 12px;
+        }
+        .sidebar-body p {
+            line-height: 22px;
+            margin: 3px 0;
+            font-size: 12px;
+        }
+
+        /* 核心指标速览样式 */
+        .index-item {
+            display: flex;
+            justify-content: space-between;
+            line-height: 22px;
+            font-size: 12px;
+            border-bottom: 1px dashed #ddd;
+            padding: 2px 0;
+        }
+        .index-item .label { color: #555; }
+        .index-item .value { color: #1c55a1; font-weight: bold; }
+
+        /* ---- 右侧内容区 ---- */
+        .content-area {
+            flex: 1;
+            background-color: #fff;
+            border: 1px solid #a8b9d0;
+            padding: 15px 20px;
+            min-height: 500px;
+        }
+        .content-area h2 {
+            font-size: 18px;
+            color: #1c55a1;
+            margin-top: 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+            font-family: "黑体", sans-serif;
+        }
+        .content-area p {
+            line-height: 24px;
+            text-indent: 2em;
+            margin: 10px 0;
+            text-align: justify;
+        }
+
+        /* 图片展示区 */
+        .img-gallery {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .img-card {
+            flex: 1;
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 5px;
+            background: #fafafa;
+        }
+        .img-card .img-placeholder {
+            width: 100%;
+            height: 150px;
+            background-color: #e8edf3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 12px;
+            border: 1px dashed #ccc;
+        }
+        .img-card .img-caption {
+            font-size: 12px;
+            color: #555;
+            padding: 5px 0;
+        }
+
+        /* 数据表格 */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 12px;
+        }
+        .data-table th {
+            background-color: #eaf0f8;
+            border: 1px solid #a8b9d0;
+            padding: 6px 10px;
+            text-align: left;
+            font-weight: bold;
+            color: #1c55a1;
+            white-space: nowrap;
+        }
+        .data-table td {
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: #f8fafd;
+        }
+
+        /* ================= 页脚 ================= */
+        .footer {
+            text-align: center;
+            padding: 15px 0;
+            color: #666;
+            line-height: 22px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+ <!-- ====== 顶部 Banner ====== -->
+    <div class="header">
+        <h1>赤魍县人民政府官方网站</h1>
+        <p>ChiWang County Official Homepage | 探索虚构边缘，感受独特风情</p>
+    </div>
+
+    <!-- ====== 导航栏（带页面跳转） ====== -->
+    <nav class="navbar">
+        <a href="index.html">首页</a>
+        <a href="news.html">乡镇概况</a>
+        <a href="sight.html" class="active">自然风光</a>
+        <a href="culture.html">人文风情</a>
+        <a href="contact.html">联系我们</a>
+    </nav>
+
+    <!-- ====== 公告栏（已修复错位） ====== -->
+    <div class="notice-bar">
+        <span class="notice-label">★ 公告：</span>
+        <span class="notice-content">关于赤魍县2026年度乡镇经济发展报告公示通知...</span>
+        <a href="notice.html" class="notice-more">关于</a>
+    </div>
+
+    <!-- ====== 主体双栏 ====== -->
+    <div class="main-content">
+
+        <!-- 左侧栏 -->
+        <aside class="sidebar">
+
+            <!-- 核心指标速览 -->
+            <div class="sidebar-box">
+                <div class="sidebar-title">核心指标速览</div>
+                <div class="sidebar-body">
+                    <div class="index-item"><span class="label">辖区总面积：</span><span class="value">280 km²</span></div>
+                    <div class="index-item"><span class="label">常住人口：</span><span class="value">4.5 万人</span></div>
+                    <div class="index-item"><span class="label">下辖乡镇：</span><span class="value">5 镇 3 乡</span></div>
+                    <div class="index-item"><span class="label">GDP总值：</span><span class="value">12.8 亿元</span></div>
+                    <div class="index-item"><span class="label">森林覆盖率：</span><span class="value">68%</span></div>
+                </div>
+            </div>
+
+            <!-- 友情链接 -->
+            <div class="sidebar-box">
+                <div class="sidebar-title">友情链接</div>
+                <div class="sidebar-body">
+                    <ul>
+                        <li><a href="#">赤蟒河风景区</a></li>
+                        <li><a href="#">虚拟古镇联盟</a></li>
+                        <li><a href="#">周边县市门户</a></li>
+                        <li><a href="#">天气预报</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </aside>
+
+        <main class="content-area">
+      <h2 class="content-title">自然风光</h2>
+
+      <p>赤魍县地处本省西南部山区，地势西北高、东南低，独特的地形地貌孕育了丰富的自然景观资源。境内山川纵横、水系发达，森林覆盖率高达68%，拥有国家级自然保护区1处、省级风景名胜区2处，是生态旅游与户外探索的理想之地。</p>
+
+      <p>县域内最具代表性的自然景观为<strong>赤蟒河风景区</strong>——河水发源于西北高山峡谷，蜿蜒流经全县，形成"峡谷幽深、碧水含烟"的独特风貌。沿河分布的原始次生林、珍稀动植物群落（如国家一级保护植物红豆杉、二级保护动物白鹇等），构成完整的生态链；河畔的梯田景观随四季更迭呈现"春绿、夏翠、秋金、冬素"的色彩变化，成为摄影爱好者的打卡胜地。</p>
+
+      <p>此外，<strong>云雾山省级风景名胜区</strong>以"云海、奇峰、古木"为核心特色：主峰海拔超1500米，常年云雾缭绕，山间怪石嶙峋、古木参天，春季杜鹃花海漫山遍野，秋季红叶层林尽染；山脚下的<strong>枫林镇古银杏群落</strong>更是千年奇观，百余株古银杏树龄超300年，秋日金黄叶片铺满村落，与徽派建筑相映成趣。</p>
+
+      <p>依托生态优势，赤魍县已建成多条自然观光线路：赤蟒河漂流、云雾山徒步、古银杏村摄影等业态成熟，配套民宿、观景台等设施完善，让游客既能沉浸式感受自然野趣，又能享受舒适的旅行体验。</p>
+
+      <!-- 三图展示区 -->
+     <div class="img-gallery">
+       <div class="img-card">
+                    <div class="img-placeholder">[赤蟒河风光图片]</div>
+                    <div class="img-caption">赤蟒河峡谷——碧水绕青山</div>
+                </div>
+                <div class="img-card">
+                    <div class="img-placeholder">[云雾山云海奇峰图片]</div>
+                    <div class="img-caption">云雾山胜境——云海伴奇峰</div>
+                </div>
+                <div class="img-card">
+                    <div class="img-placeholder">[枫林镇古银杏群落图片]</div>
+                    <div class="img-caption">千年银杏——古村映金黄</div>
+                </div>
+      </div>
+    </div>
+  <!-- 页脚 -->
+  <div class="footer">
+        Copyright © 2006 赤魍县人民政府 All Rights Reserved<br>
+        建议使用 IE 6.0 以上浏览器，800x600 分辨率浏览本站<br>
+        您是第 003,847 位访客
+    </div>
+</div>
+
+</body>
+</html>
