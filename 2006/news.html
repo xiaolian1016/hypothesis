@@ -423,7 +423,7 @@
                         <tr><td>身  高：</td><td>约 170 厘米</td></tr>
                         <tr><td>体  型：</td><td>中等偏瘦</td></tr>
                         <tr><td>衣着特征：</td><td>深蓝色夹克外套、灰色长裤、黑色布鞋</td></tr>
-                        <tr><td>随身物品：</td><td>上衣口袋内发现一把折叠雨伞，无身份证件及手机</td></tr>
+                        <tr><td>随身物品：</td><td><span id="umbrellaHint" title="这件东西也出现在另一份清单上" style="cursor:pointer; border-bottom:1px dotted #1c55a1;">上衣口袋内发现一把折叠雨伞</span>，无身份证件及手机</td></tr>
                         <tr><td>发现地点：</td><td>赤蟒河南岸浅滩（枫林镇青溪村段）</td></tr>
                         <tr><td>发现时间：</td><td>2006年3月15日 上午8时</td></tr>
                     </table>
@@ -480,5 +480,14 @@
     </div>
 
 </div>
+<script>
+(function() {
+    var el = document.getElementById('umbrellaHint');
+    if (!el) return;
+    el.addEventListener('click', function() {
+        alert('同一件物品也登记在一份已经「受潮损毁」的清单上。\n闸门上的字被刮去的那一年。');
+    });
+})();
+</script>
 </body>
 </html>

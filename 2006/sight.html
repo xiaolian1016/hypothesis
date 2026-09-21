@@ -323,8 +323,8 @@
       <!-- 三图展示区 -->
      <div class="img-gallery">
        <div class="img-card">
-                    <div class="img-placeholder">[赤魍河风光图片]</div>
-                    <div class="img-caption">赤魍河峡谷——碧水绕青山</div>
+                    <div class="img-placeholder" id="riverPic" title="对外叫赤蟒。旧名可以检索。" style="cursor:pointer;">[赤蟒河风光图片]</div>
+                    <div class="img-caption">赤蟒河峡谷——碧水绕青山</div>
                 </div>
                 <div class="img-card">
                     <div class="img-placeholder">[云雾山云海奇峰图片]</div>
@@ -343,6 +343,14 @@
         您是第 003,847 位访客
     </div>
 </div>
-
+<script>
+(function() {
+    var pic = document.getElementById('riverPic');
+    if (!pic) return;
+    pic.addEventListener('click', function() {
+        alert('导览材料只写新名。旧名在档案里。');
+    });
+})();
+</script>
 </body>
 </html>

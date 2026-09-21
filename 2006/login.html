@@ -240,7 +240,7 @@
             </div>
             <div class="login-error" id="loginError"></div>
             <div class="login-hint">
-                说明：请使用领导干部<strong>实名</strong>登录。口令为档案中登记的<strong>出生年月</strong>（六位数字，例如 196508）。<br>
+                说明：请使用领导干部<strong>实名</strong>登录。初始密码为该同志人事档案「基本情况」表中的<strong>出生年月</strong>，写成六位数字，勿加分隔符。<br>
                 不同身份可查阅的内部条目范围不同。会话保存在本机，关闭浏览器后仍保持登录，直至手动退出。
             </div>
         </div>
@@ -258,11 +258,11 @@
 (function() {
     var LOGIN_KEY = 'chiwang_login_user';
     var accounts = [
-        { name: '周明远', password: '196508', title: '中共赤魍县委书记' },
-        { name: '赵建国', password: '195703', title: '赤魍县人民政府县长' },
-        { name: '王德昌', password: '194311', title: '赤魍县人民政府县长' },
+        { name: '周明远', password: 'tyuiop', title: '中共赤魍县委书记' },
+        { name: '赵建国', password: 'zxcvbn', title: '赤魍县人民政府县长' },
+        { name: '王德昌', password: 'asdfgh', title: '赤魍县人民政府县长' },
         { name: '李慧芳', password: '195806', title: '赤魍县人民政府原县长' },
-        { name: '陈守仁', password: '191800', title: '赤魍县人民政府首任县长' }
+        { name: '陈守仁', password: 'qwerty', title: '赤魍县人民政府首任县长' }
     ];
 
     var form = document.getElementById('loginForm');

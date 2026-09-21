@@ -165,6 +165,13 @@
         .now-row td { color: #ff8a5c; font-weight: bold; }
         .toc a { color: #ff8a8a; }
         .toc li { line-height: 22px; }
+        .mark-qushou {
+            color: #ff8a5c;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-bottom: 1px dashed #ff8a5c;
+            padding: 0 1px;
+        }
 
         .stamp {
             background-color: #2c1210;
@@ -313,12 +320,12 @@
                         <td>陈守仁</td>
                         <td>私塾先生 → 首任县长</td>
                         <td>1952-08 — 1956-12-21</td>
-                        <td>林致远踏勘组夜测当日迁出。渠首朱书仍在。</td>
+                        <td>林致远踏勘组夜测当日迁出。<span class="mark-qushou">渠首</span>朱书仍在。</td>
                     </tr>
                     <tr>
                         <td>03</td>
                         <td>吴绍棠</td>
-                        <td>县水利局渠首看守</td>
+                        <td>县水利局<span class="mark-qushou">渠首</span>看守</td>
                         <td>1956-12-21 — 1960-冬至</td>
                         <td>值班房报「肺疾」。陈守仁对外仍在任，实为代签。</td>
                     </tr>
@@ -327,7 +334,7 @@
                         <td>马培元</td>
                         <td>枫林镇文书</td>
                         <td>1960-冬至 — 1964-03</td>
-                        <td>浅滩无名。交接清单第7页同日「受潮」。渠首「水赤之日勿启」被刮。</td>
+                        <td>浅滩无名。交接清单第7页同日「受潮」。<span class="mark-qushou">渠首</span>「水赤之日勿启」被刮。</td>
                     </tr>
                     <tr>
                         <td>05</td>
@@ -843,7 +850,7 @@
 
             <div class="footnote">
                 <p>卷宗编号：CW-HOST-001　|　整理单位：赤魍县档案馆　|　最近核对：2006-05</p>
-                <p>他们都还没有死。</p>
+                <p><span id="stillAlive" title="这句话也可以检索" style="cursor:pointer; border-bottom:1px dotted #8a6a6a;">他们都还没有死。</span></p>
             </div>
         </main>
     </div>
@@ -873,6 +880,12 @@
     var titleEl = document.getElementById('readerTitle');
     if (nameEl) nameEl.textContent = user.name;
     if (titleEl) titleEl.textContent = user.title || '';
+    var still = document.getElementById('stillAlive');
+    if (still) {
+        still.addEventListener('click', function() {
+            window.location.href = 'nishi.html';
+        });
+    }
 })();
 </script>
 

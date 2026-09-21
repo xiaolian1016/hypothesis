@@ -310,6 +310,14 @@
         }
         .footnote p { text-indent: 0; margin: 4px 0; }
 
+        .mark-qushou {
+            color: #8a1515;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-bottom: 1px dashed #8a1515;
+            padding: 0 1px;
+        }
+
         .footer {
             text-align: center;
             padding: 15px 0;
@@ -400,7 +408,7 @@
             <h3>一、河道与旧名</h3>
             <p>赤魍河为县域主干水系。河水发源于西北云雾山西麓裂隙泉群，自高而下切出峡谷，蜿蜒流经桃源、城关、枫林、青溪等乡镇，至枫林镇青溪村段散为浅滩，出境汇入下游干流。境内干流长度约86公里，流域面积约占全县五分之三。</p>
             <p>1952年建县后，地方志与对外材料逐步改称“赤蟒河”，取“蟒行峡谷、碧水含烟”之意。沿岸老人仍习称“赤魍河”。“魍”字见于清光绪《赤魍乡土志》残卷：<strong>“河赤如血者三日，夜闻水下有人应答，名曰魍。人若饮其赤者，魂可易舍，躯壳空置河岸。”</strong>该条在1987年新修县志时被整段删去，改为“河名来历待考”。</p>
-            <p>首任县长陈守仁任内主持修建赤蟒河第一条引水渠，主干渠全长27公里。施工档案中，渠首选址原写作“赤魍河口”，后期抄清件一律改为“赤蟒河口”。渠首闸门内侧曾用朱漆写有“水赤之日勿启”，1964年交接时该行字迹已被刮去。</p>
+            <p>首任县长陈守仁任内主持修建赤蟒河第一条引水渠，主干渠全长27公里。施工档案中，<span class="mark-qushou">渠首</span>选址原写作“赤魍河口”，后期抄清件一律改为“赤蟒河口”。<span class="mark-qushou">渠首</span>闸门内侧曾用朱漆写有<span id="gateWords" title="这六个字可以检索" style="cursor:pointer; border-bottom:1px dotted #1c55a1;">“水赤之日勿启”</span>，1964年交接时该行字迹已被刮去。</p>
 
             <div class="img-gallery">
                 <div class="img-card">
@@ -547,7 +555,7 @@
                     <tr>
                         <td>陈守仁档案中断</td>
                         <td>1964-03 调动后记录中断，交接清单第7页“受潮损毁”</td>
-                        <td>缺页时段与渠首“水赤之日勿启”被刮去为同一年</td>
+                        <td>缺页时段与<span class="mark-qushou">渠首</span>“水赤之日勿启”被刮去为同一年</td>
                     </tr>
                     <tr>
                         <td>口述错位</td>
@@ -606,5 +614,16 @@
     </div>
 
 </div>
+<script>
+(function() {
+    var el = document.getElementById('gateWords');
+    if (!el) return;
+    el.addEventListener('click', function() {
+        if (confirm('闸门内侧的字已被刮去。是否按原题检索？')) {
+            window.location.href = 'qushou.html';
+        }
+    });
+})();
+</script>
 </body>
 </html>

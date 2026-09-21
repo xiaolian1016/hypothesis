@@ -263,6 +263,13 @@
             color: #e0a46a;
         }
         .archive-note p { text-indent: 0; margin: 5px 0; color: #e0a46a; }
+        .mark-kouhao {
+            color: #e0a46a;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-bottom: 1px dashed #e0a46a;
+            padding: 0 1px;
+        }
 
         /* ================= 页脚 ================= */
         .footer {
@@ -336,7 +343,7 @@
         <main class="content-area">
             <h2>陈守仁同志档案</h2>
 
-            <p>陈守仁，男，汉族，1918年生于赤魍县枫林镇青溪村。1949年参加革命工作，1952年赤魍县建制恢复后出任首任县长，主持县政府全面工作至1964年。</p>
+            <p>陈守仁，男，汉族，1918年生于赤魍县枫林镇青溪村。1949年参加革命工作，1952年赤魍县建制恢复后出任首任县长，主持县政府全面工作至1964年。就任当日所宣<span class="mark-kouhao">口号</span>已改密，不录于本卷。</p>
 
             <p>任内主持修建赤蟒河第一条引水渠，主干渠全长27公里，解决沿线8个乡镇的灌溉难题；同期推动扫盲运动，创办赤魍县第一所初级中学，奠定全县基础教育根基。这两项工作至今仍被视为赤魍建县以来最重要的两项基础工程。</p>
 
@@ -373,7 +380,7 @@
             </table>
 
             <h3>档案备注</h3>
-            <p>1964年3月，陈守仁同志因工作调动离开赤魍县，此后档案记录中断。县档案馆现存其个人档案共计47页，其中<strong>第7页（1964年工作交接清单）缺失</strong>，缺页原因登记为"受潮损毁"。</p>
+            <p>1964年3月，陈守仁同志因工作调动离开赤魍县，此后档案记录中断。县档案馆现存其个人档案共计47页，其中<strong id="missingPage" title="缺页里只登记了一件东西" style="cursor:pointer; border-bottom:1px dotted #ff4d4d;">第7页（1964年工作交接清单）缺失</strong>，缺页原因登记为"受潮损毁"。</p>
 
             <p>另据县档案馆说明，陈守仁同志的个人照片已于1966年从档案中撤出，现存档案内页仅余照片粘贴痕迹一处，照片内容不详。</p>
 
@@ -503,6 +510,13 @@
         setTimeout(corruptRound, 600 + Math.random() * 1250);
     }
     setTimeout(corruptRound, 2500);
+
+    var missing = document.getElementById('missingPage');
+    if (missing) {
+        missing.addEventListener('click', function() {
+            alert('第7页：随身物品登记表。\n登记物品共 1 件。\n移交人签字栏空白。\n\n那一件东西，下游也出现过。');
+        });
+    }
 })();
 </script>
 </body>
