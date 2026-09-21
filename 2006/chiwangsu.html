@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>赤魍素鉴定草稿（CW-MAT-003） - 赤魍县人民政府官方网站</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e8edf3;
+            font-family: "宋体", sans-serif;
+            font-size: 12px;
+            color: #333;
+        }
+        a { color: #333; text-decoration: none; }
+        a:hover { color: #cc0000; text-decoration: underline; }
+
+        .container {
+            width: 960px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .header {
+            background: linear-gradient(to bottom, #1c55a1 0%, #3a7bd5 100%);
+            padding: 20px 25px;
+            border-bottom: 3px solid #0e3a7a;
+        }
+        .header h1 {
+            font-size: 26px;
+            color: #fff;
+            margin: 0;
+            font-weight: bold;
+            font-family: "黑体", sans-serif;
+            letter-spacing: 2px;
+        }
+        .header p {
+            font-size: 12px;
+            color: #c5d8f0;
+            margin: 5px 0 0 0;
+        }
+
+        .navbar {
+            background-color: #f0f2f5;
+            border-bottom: 2px solid #1c55a1;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .navbar a {
+            display: inline-block;
+            padding: 0 22px;
+            height: 38px;
+            line-height: 38px;
+            font-size: 14px;
+            font-family: "宋体", sans-serif;
+            color: #333;
+            border-right: 1px solid #ccc;
+            text-align: center;
+        }
+        .navbar a:first-child { border-left: 1px solid #ccc; }
+        .navbar a:hover {
+            background-color: #1c55a1;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .notice-bar {
+            background-color: #fffde6;
+            border: 1px solid #e0c070;
+            border-top: none;
+            height: 32px;
+            line-height: 32px;
+            padding: 0 10px;
+            margin: 0;
+            overflow: hidden;
+        }
+        .notice-bar .notice-label {
+            float: left;
+            color: #cc0000;
+            font-weight: bold;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .notice-bar .notice-content {
+            float: left;
+            margin-left: 10px;
+            color: #cc0000;
+            font-size: 12px;
+            white-space: nowrap;
+            max-width: 780px;
+            overflow: hidden;
+        }
+        .notice-bar .notice-more {
+            float: right;
+            color: #cc0000;
+            font-size: 12px;
+        }
+
+        .main-content {
+            display: flex;
+            margin-top: 10px;
+            gap: 10px;
+        }
+
+        .sidebar { width: 220px; flex-shrink: 0; }
+        .sidebar-box {
+            background-color: #fff;
+            border: 1px solid #a8b9d0;
+            margin-bottom: 10px;
+        }
+        .sidebar-title {
+            background: linear-gradient(to bottom, #5b9bd5 0%, #3578c6 100%);
+            color: #fff;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 6px 10px;
+            font-family: "宋体", sans-serif;
+        }
+        .sidebar-body { padding: 8px 10px; }
+        .sidebar-body ul { list-style: disc; padding-left: 20px; margin: 0; }
+        .sidebar-body li { line-height: 26px; font-size: 12px; }
+
+        .index-item {
+            display: flex;
+            justify-content: space-between;
+            line-height: 22px;
+            font-size: 12px;
+            border-bottom: 1px dashed #ddd;
+            padding: 2px 0;
+        }
+        .index-item .label { color: #555; }
+        .index-item .value { color: #1c55a1; font-weight: bold; }
+
+        .content-area {
+            flex: 1;
+            background-color: #fff;
+            border: 1px solid #a8b9d0;
+            padding: 15px 20px;
+            min-height: 300px;
+        }
+        .content-area h2 {
+            font-size: 18px;
+            color: #1c55a1;
+            margin-top: 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+            font-family: "黑体", sans-serif;
+        }
+        .content-area h3 {
+            font-size: 14px;
+            color: #1c55a1;
+            margin: 18px 0 10px 0;
+            padding-left: 8px;
+            border-left: 3px solid #1c55a1;
+            font-family: "黑体", sans-serif;
+        }
+        .content-area p {
+            line-height: 24px;
+            text-indent: 2em;
+            margin: 10px 0;
+            text-align: justify;
+        }
+        .content-area strong { color: #0e3a7a; }
+
+        .back-btn-wrap { margin-bottom: 8px; }
+        .back-btn {
+            display: inline-block;
+            padding: 2px 10px;
+            background: #f0f2f5;
+            border: 1px solid #ccc;
+            color: #1c55a1;
+            font-size: 12px;
+        }
+        .back-btn:hover { background: #1c55a1; color: #fff; text-decoration: none; }
+
+        .article-meta {
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #ccc;
+        }
+        .article-meta span { margin-right: 18px; }
+
+        .stamp {
+            background-color: #fff8e6;
+            border: 1px solid #e0c070;
+            padding: 10px 15px;
+            margin: 12px 0 16px 0;
+            font-size: 12px;
+            line-height: 22px;
+            color: #665500;
+        }
+        .stamp strong { color: #cc0000; }
+        .stamp p { text-indent: 0; margin: 4px 0; color: #665500; }
+
+        .warn-box {
+            background-color: #f8ecec;
+            border: 1px solid #c08080;
+            padding: 10px 15px;
+            margin: 12px 0;
+            font-size: 12px;
+            line-height: 22px;
+            color: #5a2020;
+        }
+        .warn-box strong { color: #cc0000; }
+        .warn-box p { text-indent: 0; margin: 4px 0; color: #5a2020; }
+
+        .quote-box {
+            background: #fafafa;
+            border-left: 3px solid #8a2a2a;
+            padding: 8px 14px;
+            margin: 12px 0;
+            color: #555;
+            font-size: 12px;
+            line-height: 22px;
+        }
+        .quote-box p { text-indent: 0; margin: 4px 0; }
+
+        .muted { color: #888; font-size: 12px; }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        .data-table th {
+            background-color: #eaf0f8;
+            border: 1px solid #a8b9d0;
+            padding: 6px 10px;
+            text-align: left;
+            font-weight: bold;
+            color: #1c55a1;
+            white-space: nowrap;
+        }
+        .data-table td {
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+            vertical-align: top;
+        }
+        .data-table tr:nth-child(even) { background-color: #f8fafd; }
+
+        .toc { padding-left: 22px; margin: 8px 0 14px 0; }
+        .toc li { line-height: 22px; }
+        .toc a { color: #1c55a1; }
+
+        .phase {
+            display: flex;
+            gap: 8px;
+            margin: 12px 0 16px 0;
+        }
+        .phase-card {
+            flex: 1;
+            border: 1px solid #c5d3e6;
+            background: #f7f9fc;
+            padding: 8px 10px;
+            text-align: center;
+        }
+        .phase-card .name {
+            font-weight: bold;
+            color: #1c55a1;
+            margin-bottom: 4px;
+        }
+        .phase-card .desc {
+            color: #555;
+            line-height: 18px;
+        }
+
+        .footnote {
+            margin-top: 18px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+            color: #777;
+            font-size: 12px;
+            line-height: 20px;
+        }
+        .footnote p { text-indent: 0; margin: 4px 0; }
+
+        .footer {
+            text-align: center;
+            padding: 15px 0;
+            color: #666;
+            line-height: 22px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>赤魍县人民政府官方网站</h1>
+        <p>ChiWang County Official Homepage | 探索虚构边缘，感受独特风情</p>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html">首页</a>
+        <a href="country.html">乡镇概况</a>
+        <a href="sight.html">自然风光</a>
+        <a href="culture.html">人文风情</a>
+        <a href="contact.html">联系我们</a>
+    </nav>
+
+    <div class="notice-bar">
+        <span class="notice-label">★ 公告：</span>
+        <span class="notice-content">本页为县档案馆物质鉴定草稿数字化转载，非正式政务公开栏目。卷宗 CW-MAT-003。</span>
+        <a href="notice.html" class="notice-more">关于</a>
+    </div>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <div class="sidebar-box">
+                <div class="sidebar-title">物质速记</div>
+                <div class="sidebar-body">
+                    <div class="index-item"><span class="label">定名：</span><span class="value">赤魍素</span></div>
+                    <div class="index-item"><span class="label">野外编号：</span><span class="value">CW-X</span></div>
+                    <div class="index-item"><span class="label">公开口径：</span><span class="value">铁锰胶体</span></div>
+                    <div class="index-item"><span class="label">载体：</span><span class="value">赤水</span></div>
+                    <div class="index-item"><span class="label">作用对象：</span><span class="value">意识过程</span></div>
+                    <div class="index-item"><span class="label">可逆性：</span><span class="value">未证实</span></div>
+                    <div class="index-item"><span class="label">分子式：</span><span class="value">无法给出</span></div>
+                </div>
+            </div>
+
+            <div class="sidebar-box">
+                <div class="sidebar-title">检出窗口</div>
+                <div class="sidebar-body">
+                    <div class="index-item"><span class="label">主峰：</span><span class="value">冬至 ±6h</span></div>
+                    <div class="index-item"><span class="label">次峰：</span><span class="value">无雨夜潮</span></div>
+                    <div class="index-item"><span class="label">富集段：</span><span class="value">峡谷中游</span></div>
+                    <div class="index-item"><span class="label">弃置段：</span><span class="value">青溪浅滩</span></div>
+                </div>
+            </div>
+
+            <div class="sidebar-box">
+                <div class="sidebar-title">相关条目</div>
+                <div class="sidebar-body">
+                    <ul>
+                        <li><a href="chiwanghe.html">赤魍河科考纪要</a></li>
+                        <li><a href="news.html">全县综述</a></li>
+                        <li><a href="sight.html">自然风光</a></li>
+                        <li><a href="chenshouren.html">陈守仁档案</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="back-btn-wrap">
+                <a href="index.html" class="back-btn">◀ 返回首页</a>
+            </div>
+
+            <h2>赤魍素（CW-X）鉴定草稿</h2>
+            <div class="article-meta">
+                <span>来源：省生态研究所联合观测组 / 省地质矿产局第七普查队（转载）</span>
+                <span>草稿时间：2006-03-16</span>
+                <span>密级：内部 · 限制传阅</span>
+            </div>
+
+            <div class="stamp">
+                <p><strong>传阅限制：</strong>本页对应县档案馆附件 CW-MAT-003。对外一律改称“铁锰质胶体杂质”，不得使用“赤魍素”“意识迁徙”“寄生体”等字样。河道条目见 <a href="chiwanghe.html">赤魍河科考纪要</a>。</p>
+                <p>定名人：顾清禾。本草稿在观测组撤点次日移交，第 4、7 节有水渍与缺行。</p>
+            </div>
+
+            <h3>目录</h3>
+            <ul class="toc">
+                <li><a href="#s1">一、定名与公开口径</a></li>
+                <li><a href="#s2">二、赋存与三相</a></li>
+                <li><a href="#s3">三、物理化学记录</a></li>
+                <li><a href="#s4">四、作用机制：意识迁徙</a></li>
+                <li><a href="#s5">五、触发条件与剂量</a></li>
+                <li><a href="#s6">六、发现沿革</a></li>
+                <li><a href="#s7">七、采样、保存与接触守则</a></li>
+                <li><a href="#s8">八、未决问题</a></li>
+            </ul>
+
+            <h3 id="s1">一、定名与公开口径</h3>
+            <p><strong>赤魍素</strong>是对赤魍河（对外称赤蟒河）水体中一种无法归入既有矿物、有机物或微生物分类之组分的内部定名。野外编号 <strong>CW-X</strong>。地方口称“魍”“河血”；公开报告写作“铁锰质胶结砾岩 / 铁锰质胶体杂质”，并注明“不具工业开采价值”。</p>
+            <p>名称取自清光绪《赤魍乡土志》残卷：“河赤如血者三日，夜闻水下有人应答，名曰魍。”1987 年新修县志删去该条。顾清禾认为“魍”不是鬼，而是河在特定窗口里把自己交出来的那一层。</p>
+            <p>它不是污染物，也不是药物。草稿原句：<strong>“CW-X 是一条路。路的两端都还活着，只是户口本跟不上。”</strong></p>
+
+            <h3 id="s2">二、赋存与三相</h3>
+            <p>平时吸附于云雾山西麓裂隙泉以下、峡谷中游河床卵石与岩壁微缝，肉眼不可见。仅在水文窗口进入水体，形成地方所谓“赤水”。窗口结束后，残余胶体随流至枫林镇青溪村浅滩，迅速失效、弃置空壳亦多在此段被发现。</p>
+
+            <div class="phase">
+                <div class="phase-card">
+                    <div class="name">潜伏相</div>
+                    <div class="desc">无色、无味<br>贴附岩缝与卵石<br>常规采样检不出</div>
+                </div>
+                <div class="phase-card">
+                    <div class="name">赤水相</div>
+                    <div class="desc">暗红胶体悬浮<br>冬至或无雨夜潮<br>可完成意识迁徙</div>
+                </div>
+                <div class="phase-card">
+                    <div class="name">灰白相</div>
+                    <div class="desc">见光 / 失密后解体<br>粉末重量不稳定<br>迁徙能力消失</div>
+                </div>
+            </div>
+
+            <p>赤水主窗口为冬至前后约六至八小时；次窗口为无降雨却水位陡升的夜间（1956 年林致远记录为 0.4 米）。2006 年 3 月 14 日青溪浅滩出现的赤水团，浓度高于 1956、1979 两次冬至峰值，不在冬至，成因未明。</p>
+
+            <h3 id="s3">三、物理化学记录</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width:130px;">项目</th>
+                        <th>记录</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>新鲜外观</td>
+                        <td>暗红胶体，略黏，无刺激性气味。稀释后仍如薄血。</td>
+                    </tr>
+                    <tr>
+                        <td>见光变化</td>
+                        <td>日光下数小时至三日褪为灰白。沈怀德：“标本不肯停留在纸面上的颜色。”</td>
+                    </tr>
+                    <tr>
+                        <td>重量</td>
+                        <td>同一份灰白粉末连续称量，读数不能重复。差额不遵守蒸发或吸潮规律。</td>
+                    </tr>
+                    <tr>
+                        <td>光谱 / 分子式</td>
+                        <td>常规紫外、红外、原子吸收无法给出稳定分子式。铁、锰峰会被仪器误读，实为 CW-X 峰值。</td>
+                    </tr>
+                    <tr>
+                        <td>容器反应</td>
+                        <td>玻璃采样瓶密封不严时，数小时内自行裂纹或碎裂。金属瓶内侧出现与瓶壁无关的指纹状赤痕。</td>
+                    </tr>
+                    <tr>
+                        <td>声响</td>
+                        <td>赤水相水体可录到夹杂人声。音节曾对上沈怀德桩刻「不要——」。</td>
+                    </tr>
+                    <tr>
+                        <td>公开替代描述</td>
+                        <td>短时水质异常；铁锰胶体；不宜作为城镇集中式饮用水源。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 id="s4">四、作用机制：意识迁徙</h3>
+            <div class="warn-box">
+                <p><strong>核心表述（未刊）：</strong>赤魍素不作用于组织、脏器或基因组，而作用于<strong>正在进行的意识过程</strong>。当两个以上活体同时暴露于足浓度赤水，并发生皮肤、黏膜或创口接触时，意识可自一个体迁入另一个体。</p>
+                <p>迁出后的躯壳：生命体征在数分钟至数小时内停止，外观一如溺亡、猝死或病故。迁入方：体貌、户籍、衣着、证件均仍属原壳主人；记忆、口头禅、笔迹习惯与旧伤的“记得方式”换成迁出者。</p>
+                <p>一次迁徙完成后，该次参与的赤水即失效。过程在现有条件下<strong>不可逆</strong>。证件几乎总是留在“还活着的那个人”身上，故空壳常被报为无名尸体。</p>
+            </div>
+            <p>同一意识可在不同年份反复占用不同身体，亦可借名回到已经空过的公示身份（名单中写作“二次 / 三次”）。河只认当时接触的两具活体，不认任命文件。</p>
+            <p>1980 年沈怀德动物试验：标记过的犬接触赤水后，其训练反应出现在另一只未训练的犬身上，原犬于次日死亡。人体案例见寄生体名单与三批科考未刊记录，本草稿不列人名。</p>
+
+            <div class="quote-box">
+                <p>沈怀德 1980-12-22 手稿：</p>
+                <p>「它不杀人。它只搬家。搬走的人还在说话，留下的房子被报成无名尸体。你们若在下游捡到一具没有证件的身体，先去问：最近是谁突然变得更像另一个人。」</p>
+            </div>
+
+            <h3 id="s5">五、触发条件与剂量</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width:40px;">项</th>
+                        <th>必要条件</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>水体处于赤水相</td>
+                        <td>潜伏相与灰白相均不能完成迁徙。浓度需达到仪器可把铁离子“误读”的水平。</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>至少两个活体同时接触</td>
+                        <td>单人入水，即使创口暴露，亦未见迁徙。第三人在岸上未接触则不受影响。</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>接触面破损或长时间浸泡</td>
+                        <td>完好皮肤短时溅湿通常不足。落水、对峙、争抢漂物是最常见现场。</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>双方均为活的意识载体</td>
+                        <td>尸体、麻醉过深者未观察到作为迁入端。迁出端在接触当时必须仍有可迁出的意识。</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>方向性：多数记录显示，先入水或创口更大的一方成为迁出端，但 2005-12-21 两名村民争木盆一例中，双方一度互相用对方名字应答，约一刻钟后才“定格”。是否存在短暂双占，草稿未写完。</p>
+            <p>饮用：旧志称“人若饮其赤者，魂可易舍”。近代无单独饮用对照。内部守则仍禁止在赤水窗口取饮、取灌。</p>
+
+            <h3 id="s6">六、发现沿革</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width:88px;">年份</th>
+                        <th style="width:140px;">记录者</th>
+                        <th>对 CW-X 的认识</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>光绪残卷</td>
+                        <td>乡土志佚名</td>
+                        <td>名之为魍。已写明饮赤则魂可易舍、空壳置于河岸。</td>
+                    </tr>
+                    <tr>
+                        <td>1956</td>
+                        <td>林致远　省水利厅</td>
+                        <td>夜潮、赤色泥痕、测工互换铺位。批“勿写入公报”。未定名。</td>
+                    </tr>
+                    <tr>
+                        <td>1979—1981</td>
+                        <td>沈怀德　第七普查队</td>
+                        <td>自岩芯分离胶体；完成动物“行为主体更换”。本人未随队返回。</td>
+                    </tr>
+                    <tr>
+                        <td>2005.11—2006.3</td>
+                        <td>顾清禾　生态所</td>
+                        <td>定名赤魍素，写明三相、触发条件与不可逆。3 月 16 日移交本草稿后未再发表。</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>公开链条止于“水文、植被、矿产”。一切关于意识的句子只存在于水利杂卷、私人笔记本和本附件。</p>
+
+            <h3 id="s7">七、采样、保存与接触守则</h3>
+            <p class="muted" style="text-indent:0;">以下为观测组内部守则，非正式安全生产文件。</p>
+            <table class="data-table">
+                <tbody>
+                    <tr>
+                        <th style="width:130px;">环节</th>
+                        <th>规定</th>
+                    </tr>
+                    <tr>
+                        <td>窗口识别</td>
+                        <td>水色转赤、铁离子读数无工矿来源地升高、岸边出现成排赤泥痕时，视为窗口已开。</td>
+                    </tr>
+                    <tr>
+                        <td>入水</td>
+                        <td><strong>禁止双人同时入水。</strong>采样须单人、短时、隔膜手套。禁止创口暴露。对岸有人时不得下水。</td>
+                    </tr>
+                    <tr>
+                        <td>容器</td>
+                        <td>使用预先烘干的厚壁玻璃，双层蜡封。回程避免震动。瓶裂即放弃，不得用手捡碎片。</td>
+                    </tr>
+                    <tr>
+                        <td>保存</td>
+                        <td>避光、冷藏、单独柜。灰白相标本仍须当活物登记，不得与其他岩芯混放。</td>
+                    </tr>
+                    <tr>
+                        <td>记录</td>
+                        <td>笔迹、口头禅、旧伤记忆出现错位时，先核对最近一次赤水窗口，再谈“精神异常”。</td>
+                    </tr>
+                    <tr>
+                        <td>对外口径</td>
+                        <td>铁锰胶体；水质异常；风景区保护。渠首旧题“水赤之日勿启”不得恢复。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 id="s8">八、未决问题</h3>
+            <p>分子式为何无法稳定；重量差额去了哪里；声响中的人声是迁出者、迁入者，还是河自己；灰白相是否仍能在特定条件下回到赤水相；单次窗口内能否发生两次以上迁徙；<strong>迁出者是否记得自己做过房子</strong>。</p>
+            <p>顾清禾移交附条未写完的一句，只余：「他们都还没有——」</p>
+
+            <div class="quote-box">
+                <p>「对外请称赤蟒河。河自己知道旧名。</p>
+                <p>CW-X 不是污染物。它是一条路。」</p>
+            </div>
+
+            <div class="footnote">
+                <p>卷宗编号：CW-MAT-003（附件，主卷 CW-HYD-017）　|　整理单位：赤魍县档案馆　|　最近核对：2006-04-02</p>
+                <p>缺页：第 4 节人体对照表、第 7 节动物原始数据仅余封面。林致远 1956 年草图未入卷。</p>
+                <p>相关检索：赤魍河　赤魍素　CW-X　赤水　寄生体名单</p>
+            </div>
+        </main>
+    </div>
+
+    <div class="footer">
+        Copyright © 2006 赤魍县人民政府 All Rights Reserved<br>
+        建议使用 IE 6.0 以上浏览器，800x600 分辨率浏览本站<br>
+        您是第 003,847 位访客
+    </div>
+
+</div>
+</body>
+</html>
