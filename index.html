@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>首页 - 赤魍县人民政府官方网站</title>
+    <style>
+        /* ================= 全局设置 ================= */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background-color: #e8edf3; 
+            font-family: "宋体", sans-serif; 
+            font-size: 12px; 
+            color: #333; 
+        }
+        a { color: #333; text-decoration: none; }
+        a:hover { color: #cc0000; text-decoration: underline; }
+
+        /* ================= 页面总容器 ================= */
+        .container { 
+            width: 960px; 
+            margin: 0 auto; 
+            padding: 10px; 
+        }
+
+        /* ================= 顶部 Banner（改为相对定位） ================= */
+        .header {
+            background: linear-gradient(to bottom, #1c55a1 0%, #3a7bd5 100%);
+            padding: 20px 25px;
+            border-bottom: 3px solid #0e3a7a;
+            position: relative; /* 为搜索栏提供定位基准 */
+        }
+        .header h1 { 
+            font-size: 26px; 
+            color: #fff; 
+            margin: 0; 
+            font-weight: bold; 
+            font-family: "黑体", sans-serif; 
+            letter-spacing: 2px; 
+        }
+        .header p { 
+            font-size: 12px; 
+            color: #c5d8f0; 
+            margin: 5px 0 0 0; 
+        }
+
+        /* ================= 搜索栏（Banner右侧） ================= */
+        .search-panel {
+            display: none;
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            animation: fadeSlideIn 0.3s ease-out;
+        }
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(-50%) translateX(15px); }
+            to   { opacity: 1; transform: translateY(-50%) translateX(0); }
+        }
+        .search-panel.show { display: flex; }
+
+        .search-inner {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            background: rgba(255,255,255,0.95);
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .search-inner input[type="text"] {
+            width: 220px;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 12px;
+            border: none;
+            font-size: 12px;
+            font-family: "宋体", sans-serif;
+            color: #333;
+            outline: none;
+            background: transparent;
+        }
+        .search-inner input[type="text"]::placeholder {
+            color: #999;
+        }
+        .search-inner button {
+            height: 30px;
+            padding: 0 16px;
+            background: #0e3a7a;
+            color: #fff;
+            border: none;
+            font-size: 12px;
+            font-family: "宋体", sans-serif;
+            cursor: pointer;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+        .search-inner button:hover {
+            background: #cc0000;
+        }
+
+        .login-status {
+            position: absolute;
+            right: 25px;
+            top: 8px;
+            color: #c5d8f0;
+            font-size: 12px;
+            z-index: 90;
+        }
+        .login-status a { color: #fff; }
+        .login-status a:hover { color: #ffd0d0; }
+        .header.has-search .login-status {
+            top: 6px;
+        }
+
+        /* ================= 导航栏 ================= */
+        .navbar {
+            background-color: #f0f2f5;
+            border-bottom: 2px solid #1c55a1;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .navbar a {
+            display: inline-block;
+            padding: 0 22px;
+            height: 38px;
+            line-height: 38px;
+            font-size: 14px;
+            font-family: "宋体", sans-serif;
+            color: #333;
+            border-right: 1px solid #ccc;
+            text-align: center;
+            cursor: pointer;
+        }
+        .navbar a:first-child { border-left: 1px solid #ccc; }
+        .navbar a:hover {
+            background-color: #1c55a1;
+            color: #fff;
+            text-decoration: none;
+        }
+        .navbar a.active {
+            background-color: #1c55a1;
+            color: #fff;
+        }
+
+        /* ================= 公告栏 ================= */
+        .notice-bar {
+            background-color: #fffde6;
+            border: 1px solid #e0c070;
+            border-top: none;
+            height: 32px;
+            line-height: 32px;
+            padding: 0 10px;
+            margin: 0;
+            overflow: hidden;
+        }
+        .notice-bar .notice-label {
+            float: left;
+            color: #cc0000;
+            font-weight: bold;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .notice-bar .notice-content {
+            float: left;
+            margin-left: 10px;
+            color: #cc0000;
+            font-size: 12px;
+            white-space: nowrap;
+            max-width: 780px;
+            overflow: hidden;
+        }
+        .notice-bar .notice-more {
+            float: right;
+            color: #cc0000;
+            font-size: 12px;
+        }
+
+        /* ================= 主体双栏布局 ================= */
+        .main-content {
+            display: flex;
+            margin-top: 10px;
+            gap: 10px;
+        }
+
+        /* ---- 左侧栏 ---- */
+        .sidebar { width: 220px; flex-shrink: 0; }
+        .sidebar-box {
+            background-color: #fff;
+            border: 1px solid #a8b9d0;
+            margin-bottom: 10px;
+        }
+        .sidebar-title {
+            background: linear-gradient(to bottom, #5b9bd5 0%, #3578c6 100%);
+            color: #fff;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 6px 10px;
+            font-family: "宋体", sans-serif;
+        }
+        .sidebar-body { padding: 8px 10px; }
+        .sidebar-body ul { list-style: disc; padding-left: 20px; margin: 0; }
+        .sidebar-body li { line-height: 26px; font-size: 12px; }
+
+        .index-item {
+            display: flex;
+            justify-content: space-between;
+            line-height: 22px;
+            font-size: 12px;
+            border-bottom: 1px dashed #ddd;
+            padding: 2px 0;
+        }
+        .index-item .label { color: #555; }
+        .index-item .value { color: #1c55a1; font-weight: bold; }
+
+        /* ---- 右侧内容区 ---- */
+        .content-area {
+            flex: 1;
+            background-color: #fff;
+            border: 1px solid #a8b9d0;
+            padding: 15px 20px;
+            min-height: 300px;
+        }
+        .content-area h2 {
+            font-size: 18px;
+            color: #1c55a1;
+            margin-top: 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+            font-family: "黑体", sans-serif;
+        }
+        .content-area p {
+            line-height: 24px;
+            text-indent: 2em;
+            margin: 10px 0;
+            text-align: justify;
+        }
+
+        /* ================= 页脚 ================= */
+        .footer {
+            text-align: center;
+            padding: 15px 0;
+            color: #666;
+            line-height: 22px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ====== 顶部 Banner + 搜索栏 ====== -->
+    <div class="header">
+        <h1>赤魍县人民政府官方网站</h1>
+        <p>ChiWang County Official Homepage | 探索虚构边缘，感受独特风情</p>
+
+        <div class="login-status" id="loginStatus"></div>
+
+        <!-- 搜索面板（Banner右侧，默认隐藏） -->
+        <div class="search-panel" id="searchPanel">
+            <div class="search-inner">
+                <input type="text" id="searchInput" placeholder="输入关键词搜索..." />
+                <button type="button" id="searchBtn">搜 索</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== 导航栏 ====== -->
+    <nav class="navbar">
+        <a href="index.html" class="active" id="homeBtn">首页</a>
+        <a href="country.html">乡镇概况</a>
+        <a href="sight.html">自然风光</a>
+        <a href="culture.html">人文风情</a>
+        <a href="contact.html">联系我们</a>
+        <a href="login.html" id="navLogin">登录</a>
+    </nav>
+
+    <!-- ====== 公告栏 ====== -->
+    <div class="notice-bar">
+        <span class="notice-label">★ 公告：</span>
+        <span class="notice-content">关于赤魍县2026年度乡镇经济发展报告公示通知...</span>
+        <a href="notice.html" class="notice-more">关于</a>
+    </div>
+
+    <!-- ====== 主体双栏 ====== -->
+    <div class="main-content">
+
+        <!-- 左侧栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-box">
+                <div class="sidebar-title">首页</div>
+                <div class="sidebar-body">
+                    <ul>
+                        <li><a href="country.html">全县综述</a></li>
+                        <li><a href="country.html">行政区划图</a></li>
+                        <li><a href="country.html">各乡镇详细数据</a></li>
+                        <li><a href="culture.html">历史沿革</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sidebar-box">
+                <div class="sidebar-title">核心指标速览</div>
+                <div class="sidebar-body">
+                    <div class="index-item"><span class="label">辖区总面积：</span><span class="value">280 km²</span></div>
+                    <div class="index-item"><span class="label">常住人口：</span><span class="value">4.5 万人</span></div>
+                    <div class="index-item"><span class="label">下辖乡镇：</span><span class="value">5 镇 3 乡</span></div>
+                    <div class="index-item"><span class="label">GDP总值：</span><span class="value">12.8 亿元</span></div>
+                    <div class="index-item"><span class="label">森林覆盖率：</span><span class="value">68%</span></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 右侧内容区 -->
+        <main class="content-area">
+            <h2>首页</h2>
+
+            <p>赤魍县位于本省西南部山区，地势西北高、东南低。全县辖5个镇、3个乡，共有行政村48个，社区居委会6个。县城驻地为城关镇，是全县政治、经济、文化中心。</p>
+
+            <p>近年来，赤魍县依托丰富的自然资源和历史文化遗存，大力发展生态旅游与特色农业。境内拥有国家级自然保护区一处，省级风景名胜区两处。乡镇建设日新月异，基础设施不断完善，已实现村村通公路、通宽带等网络。</p>
+
+            <p>当地村民世代以农耕为主，民风淳朴，热情好客。每逢传统节庆，各村都会举办盛大的民俗活动，如舞龙灯、山歌对唱、手工染布等。村民们保留着传统的手工艺制作技艺，其中"古法酿醋"和"手工织锦"已被列入省级非物质文化遗产名录。随着旅游业的发展，越来越多村民参与到民宿经营和特色农产品销售中，生活水平稳步提高。</p>
+
+            <div id="welcomeMotto" title="与天同寿" style="font-size: 64px; font-weight: bold; color: #1c55a1; text-align: center; margin: 40px 0; cursor: default;">
+                欢迎来到赤魍县
+            </div>
+        </main>
+    </div>
+
+    <!-- ====== 页脚 ====== -->
+    <div class="footer">
+        Copyright © 2006 赤魍县人民政府 All Rights Reserved<br>
+        建议使用 IE 6.0 以上浏览器，800x600 分辨率浏览本站<br>
+        您是第 <span id="visitorNum" title="缺的那一页不在这里" style="cursor:pointer;">003,847</span> 位访客
+    </div>
+
+</div>
+
+<!-- ====== 三次点击触发搜索栏脚本 ====== -->
+<script>
+(function() {
+    var homeBtn = document.getElementById('homeBtn');
+    var searchPanel = document.getElementById('searchPanel');
+    var searchInput = document.getElementById('searchInput');
+    var searchBtn = document.getElementById('searchBtn');
+    var clickCount = 0;
+    var clickTimer = null;
+    var CLICK_INTERVAL = 800;
+    var SEARCH_UNLOCK_KEY = 'chiwang_search_unlocked';
+    var LOGIN_KEY = 'chiwang_login_user';
+    var HOST_LIST_SPECIAL_USERS = ['周明远'];
+
+    function getLoginUser() {
+        try {
+            return JSON.parse(localStorage.getItem(LOGIN_KEY) || 'null');
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function renderLoginStatus() {
+        var box = document.getElementById('loginStatus');
+        var navLogin = document.getElementById('navLogin');
+        var user = getLoginUser();
+        if (!box) return;
+        if (user && user.name) {
+            box.innerHTML = '当前用户：<strong style="color:#fff;">' + user.name + '</strong>　<a href="#" id="logoutBtn">退出</a>';
+            if (navLogin) navLogin.style.display = 'none';
+            var logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    try { localStorage.removeItem(LOGIN_KEY); } catch (err) {}
+                    window.location.reload();
+                });
+            }
+        } else {
+            box.innerHTML = '<a href="login.html">内部登录</a>';
+            if (navLogin) navLogin.style.display = '';
+        }
+    }
+
+    renderLoginStatus();
+
+    function showSearchPanel() {
+        searchPanel.classList.add('show');
+        try { localStorage.setItem(SEARCH_UNLOCK_KEY, '1'); } catch (e) {}
+        searchInput.focus();
+    }
+
+    try {
+        if (localStorage.getItem(SEARCH_UNLOCK_KEY) === '1') {
+            searchPanel.classList.add('show');
+        }
+    } catch (e) {}
+
+    // ========== 搜索关键词 → 页面跳转映射 ==========
+    // 带 password 字段的条目为加密词条，需校验密码后方可跳转
+    var searchRules = [
+        {
+            keywords: ['陈守仁'],
+            page: 'chenshouren.html',
+            hint: '赤魍县的口号是',
+            password: '与天同寿'
+        },
+        {
+            keywords: ['王德昌'],
+            page: 'wangdechang.html',
+            hint: '我是谁',
+            password: '范致'
+        },
+        {
+            keywords: ['李慧芳'],
+            page: 'lihuifang.html',
+            hint: '我是谁',
+            password: '林雨涵'
+        },
+        {
+            keywords: ['赵建国'],
+            page: 'zhaojianguo.html'
+        },
+        {
+            keywords: ['赤魍河'],
+            page: 'chiwanghe.html'
+        },
+        {
+            keywords: ['赤魍素', 'CW-X', '赤水', '铁锰质胶体'],
+            page: 'chiwangsu.html'
+        },
+        {
+            keywords: ['水赤之日勿启', '渠首'],
+            page: 'qushou.html'
+        },
+        {
+            keywords: ['黑色折叠伞', '折叠雨伞', '折叠伞'],
+            page: 'news.html'
+        },
+        {
+            keywords: ['他们都还没有死'],
+            page: 'nishi.html'
+        },
+        {
+            keywords: ['乡镇', '概况', '行政区划', '面积', '人口', 'GDP', '经济'],
+            page: 'country.html'
+        },
+        {
+            keywords: ['自然', '风光', '风景', '景区', '保护区', '山水', '旅游'],
+            page: 'sight.html'
+        },
+        {
+            keywords: ['人文', '风情', '文化', '历史', '民俗', '手工艺', '酿醋', '织锦', '龙灯', '山歌', '染布', '非遗'],
+            page: 'culture.html'
+        },
+        {
+            keywords: ['联系', '电话', '地址', '邮箱', '办公'],
+            page: 'contact.html'
+        },
+        {
+            keywords: ['公告', '通知', '公示', '报告'],
+            page: 'notice.html'
+        },
+        {
+            keywords: ['周明远'],
+            page: 'lingdao.html'
+        },
+        {
+            keywords: ['寄生体名单'],
+            hostList: true
+        }
+    ];
+
+    // 执行搜索：匹配关键词后跳转对应页面
+    function doSearch() {
+        var query = searchInput.value.trim();
+        if (!query) {
+            alert('请输入搜索关键词。');
+            return;
+        }
+
+        // 逐条规则匹配，输入内容包含任一关键词即跳转
+        for (var i = 0; i < searchRules.length; i++) {
+            var rule = searchRules[i];
+            for (var j = 0; j < rule.keywords.length; j++) {
+                if (query.indexOf(rule.keywords[j]) !== -1) {
+
+                    // 寄生体名单：按登录身份分流
+                    if (rule.hostList) {
+                        var user = getLoginUser();
+                        if (user && HOST_LIST_SPECIAL_USERS.indexOf(user.name) !== -1) {
+                            window.location.href = 'jisheng.html';
+                        } else {
+                            window.location.href = 'nishi.html';
+                        }
+                        return;
+                    }
+
+                    // 加密词条：需输入密码
+                    if (rule.password) {
+                        var input = prompt('该词条已加密。\n\n提示：' + rule.hint + '？\n\n请输入密码：');
+                        if (input === null) return;              // 用户取消
+                        if (input.trim() === rule.password) {
+                            window.location.href = rule.page;     // 密码正确
+                        } else {
+                            alert('密码错误，无法查阅该词条。');   // 密码错误
+                        }
+                        return;
+                    }
+
+                    window.location.href = rule.page;
+                    return;
+                }
+            }
+        }
+
+        // 未匹配到任何规则
+        alert('未找到与"' + query + '"相关的内容页面。\n\n可尝试搜索：乡镇概况、自然风光、人文风情、联系我们 等。');
+    }
+
+    // 搜索按钮点击
+    searchBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        doSearch();
+    });
+
+    // 输入框回车键触发搜索
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            doSearch();
+        }
+    });
+
+    // ========== 三次点击"首页"显示搜索栏 ==========
+    homeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        clickCount++;
+        if (clickTimer) clearTimeout(clickTimer);
+
+        if (clickCount >= 3) {
+            showSearchPanel();
+            clickCount = 0;
+            return;
+        }
+
+        clickTimer = setTimeout(function() {
+            clickCount = 0;
+        }, CLICK_INTERVAL);
+    });
+
+    var visitorNum = document.getElementById('visitorNum');
+    if (visitorNum) {
+        visitorNum.addEventListener('click', function() {
+            var ans = prompt('缺页登记。\n\n第7页去了哪里？');
+            if (ans === null) return;
+            ans = ans.replace(/\s+/g, '');
+            if (ans.indexOf('受潮') !== -1 || ans === '缺失' || ans.indexOf('交接') !== -1) {
+                alert('清单上只剩一件东西。去搜它。');
+            } else {
+                alert('档案仍写：受潮损毁。');
+            }
+        });
+    }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>王德昌同志档案 - 赤魍县人民政府官方网站</title>
+    <style>
+        /* ================= 全局设置 ================= */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #170707;
+            background-image: radial-gradient(circle at 50% 0%, #2b0e0e 0%, #170707 65%);
+            font-family: "宋体", sans-serif;
+            font-size: 12px;
+            color: #d4adad;
+        }
+        a { color: #d4adad; text-decoration: none; }
+        a:hover { color: #ff4d4d; text-decoration: underline; }
+
+        /* ================= 页面总容器 ================= */
+        .container {
+            width: 960px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        /* ================= 顶部 Banner ================= */
+        .header {
+            background: linear-gradient(to bottom, #7d1111 0%, #400606 100%);
+            padding: 20px 25px;
+            border-bottom: 3px solid #b81c1c;
+        }
+        .header h1 {
+            font-size: 26px;
+            color: #f7dede;
+            margin: 0;
+            font-weight: bold;
+            font-family: "黑体", sans-serif;
+            letter-spacing: 2px;
+            text-shadow: 0 0 12px rgba(255, 60, 60, 0.55);
+        }
+        .header p {
+            font-size: 12px;
+            color: #c98a8a;
+            margin: 5px 0 0 0;
+        }
+
+        /* ================= 导航栏 ================= */
+        .navbar {
+            background-color: #240c0c;
+            border-bottom: 2px solid #a81515;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .navbar a {
+            display: inline-block;
+            padding: 0 22px;
+            height: 38px;
+            line-height: 38px;
+            font-size: 14px;
+            font-family: "宋体", sans-serif;
+            color: #c9a3a3;
+            border-right: 1px solid #4a1a1a;
+            text-align: center;
+        }
+        .navbar a:first-child { border-left: 1px solid #4a1a1a; }
+        .navbar a:hover {
+            background-color: #a81515;
+            color: #fff;
+            text-decoration: none;
+        }
+        .navbar a.active {
+            background-color: #a81515;
+            color: #fff;
+        }
+
+        /* ================= 公告栏 ================= */
+        .notice-bar {
+            background-color: #2c1210;
+            border: 1px solid #6e2a1a;
+            border-top: none;
+            height: 32px;
+            line-height: 32px;
+            padding: 0 10px;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .notice-bar .notice-label {
+            float: left;
+            color: #ff8a5c;
+            font-weight: bold;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .notice-bar .notice-content {
+            float: left;
+            margin-left: 10px;
+            color: #ff8a5c;
+            font-size: 12px;
+            white-space: nowrap;
+            max-width: 780px;
+            overflow: hidden;
+        }
+        .notice-bar .notice-more {
+            float: right;
+            color: #ff8a5c;
+            font-size: 12px;
+        }
+
+        /* ================= 主体双栏布局 ================= */
+        .main-content {
+            display: flex;
+            margin-top: 10px;
+            gap: 10px;
+        }
+
+        /* ---- 左侧栏 ---- */
+        .sidebar {
+            width: 220px;
+            flex-shrink: 0;
+        }
+        .sidebar-box {
+            background-color: #200d0d;
+            border: 1px solid #5a1a1a;
+            margin-bottom: 10px;
+        }
+        .sidebar-title {
+            background: linear-gradient(to bottom, #7d1111 0%, #4a0808 100%);
+            color: #f0d0d0;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 6px 10px;
+            font-family: "宋体", sans-serif;
+        }
+        .sidebar-body {
+            padding: 8px 10px;
+        }
+        .sidebar-body ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
+        .sidebar-body li {
+            line-height: 26px;
+            font-size: 12px;
+        }
+        .sidebar-body p {
+            line-height: 22px;
+            margin: 3px 0;
+            font-size: 12px;
+        }
+
+        /* 核心指标速览样式 */
+        .index-item {
+            display: flex;
+            justify-content: space-between;
+            line-height: 22px;
+            font-size: 12px;
+            border-bottom: 1px dashed #4a1a1a;
+            padding: 2px 0;
+        }
+        .index-item .label { color: #a58080; }
+        .index-item .value { color: #ff5a5a; font-weight: bold; }
+
+        /* ---- 右侧内容区 ---- */
+        .content-area {
+            flex: 1;
+            background-color: #200d0d;
+            border: 1px solid #5a1a1a;
+            padding: 15px 20px;
+            min-height: 300px;
+        }
+        .content-area h2 {
+            font-size: 18px;
+            color: #ff5a5a;
+            margin-top: 0;
+            border-bottom: 1px solid #4a1a1a;
+            padding-bottom: 8px;
+            font-family: "黑体", sans-serif;
+            text-shadow: 0 0 10px rgba(255, 60, 60, 0.4);
+        }
+        .content-area h3 {
+            font-size: 14px;
+            color: #ff5a5a;
+            margin: 18px 0 10px 0;
+            padding-left: 8px;
+            border-left: 3px solid #b81c1c;
+            font-family: "黑体", sans-serif;
+        }
+        .content-area p {
+            line-height: 24px;
+            text-indent: 2em;
+            margin: 10px 0;
+            text-align: justify;
+        }
+        .content-area strong { color: #ff7a6a; }
+        .content-area p.note-line {
+            text-indent: 0;
+            font-size: 12px;
+            color: #a58080;
+            line-height: 20px;
+        }
+
+        /* 图片展示区 */
+        .img-gallery {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .img-card {
+            flex: 1;
+            border: 1px solid #4a1a1a;
+            text-align: center;
+            padding: 5px;
+            background: #1c0b0b;
+        }
+        .img-card .img-placeholder {
+            width: 100%;
+            height: 150px;
+            background-color: #2a1212;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8a6a6a;
+            font-size: 12px;
+            border: 1px dashed #5a2a2a;
+        }
+        .img-card .img-caption {
+            font-size: 12px;
+            color: #a58080;
+            padding: 5px 0;
+        }
+
+        /* 数据表格 */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 12px;
+        }
+        .data-table th {
+            background-color: #3a1212;
+            border: 1px solid #5a1a1a;
+            padding: 6px 10px;
+            text-align: left;
+            font-weight: bold;
+            color: #ff8a8a;
+            white-space: nowrap;
+        }
+        .data-table td {
+            border: 1px solid #4a1a1a;
+            padding: 6px 10px;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: #260f0f;
+        }
+
+        /* 档案提示框 */
+        .archive-note {
+            background-color: #2c1210;
+            border: 1px solid #6e2a1a;
+            padding: 10px 14px;
+            margin: 15px 0;
+            line-height: 22px;
+            font-size: 12px;
+            color: #e0a46a;
+        }
+        .archive-note p { text-indent: 0; margin: 5px 0; color: #e0a46a; }
+
+        /* ================= 页脚 ================= */
+        .footer {
+            text-align: center;
+            padding: 15px 0;
+            color: #8a6a6a;
+            line-height: 22px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+ <!-- ====== 顶部 Banner ====== -->
+    <div class="header">
+        <h1>赤魍县人民政府官方网站</h1>
+        <p><span class="corrupt">ChiWang County Official Homepage</span> | 探索虚构边缘，感受独特风情</p>
+    </div>
+
+    <!-- ====== 导航栏 ====== -->
+    <nav class="navbar">
+        <a href="index.html">首页</a>
+        <a href="country.html">乡镇概况</a>
+        <a href="sight.html">自然风光</a>
+        <a href="culture.html">人文风情</a>
+        <a href="contact.html">联系我们</a>
+    </nav>
+
+    <!-- ====== 公告栏 ====== -->
+    <div class="notice-bar">
+        <span class="notice-label">★ 公告：</span>
+        <span class="notice-content">关于赤魍县2026年度乡镇经济发展报告公示通知...</span>
+        <a href="notice.html" class="notice-more">关于</a>
+    </div>
+
+    <!-- ====== 主体双栏 ====== -->
+    <div class="main-content">
+
+        <!-- 左侧栏 -->
+        <aside class="sidebar">
+
+            <!-- 核心指标速览 -->
+            <div class="sidebar-box">
+                <div class="sidebar-title">核心指标速览</div>
+                <div class="sidebar-body">
+                    <div class="index-item"><span class="label">辖区总面积：</span><span class="value">280 km²</span></div>
+                    <div class="index-item"><span class="label">常住人口：</span><span class="value">4.5 万人</span></div>
+                    <div class="index-item"><span class="label">下辖乡镇：</span><span class="value">5 镇 3 乡</span></div>
+                    <div class="index-item"><span class="label">GDP总值：</span><span class="value">12.8 亿元</span></div>
+                    <div class="index-item"><span class="label">森林覆盖率：</span><span class="value">68%</span></div>
+                </div>
+            </div>
+
+            <!-- 友情链接 -->
+            <div class="sidebar-box">
+                <div class="sidebar-title">友情链接</div>
+                <div class="sidebar-body">
+                    <ul>
+                        <li><a href="#">赤蟒河风景区</a></li>
+                        <li><a href="#">虚拟古镇联盟</a></li>
+                        <li><a href="#">周边县市门户</a></li>
+                        <li><a href="https://yidian.weather.com.cn/">天气预报</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </aside>
+
+        <main class="content-area">
+            <h2>王德昌同志档案</h2>
+
+            <p>王德昌，男，汉族，1943年11月生于赤魍县青溪乡，1962年9月参加工作，1965年7月加入中国共产党，中专学历。现任赤魍县人民政府县长。</p>
+
+            <p>历任青溪人民公社农技员、文书，赤魍县农业局副局长，中共赤魍县委书记等职。1978年至1987年任中共赤魍县委书记期间，率先推行家庭联产承包责任制试点，带领群众发展茶叶、核桃种植；主持改建县城至省道连接线，打通对外交通瓶颈。</p>
+
+            <p>2006年3月起任赤魍县人民政府县长。任现职以来，王德昌同志分管县发展和改革局、财政局、农业农村局工作，统筹推进赤蟒河沿岸农田水利改造与县乡道路硬化工程，2006年度完成农村公路硬化42公里，新增有效灌溉面积3,100亩，协调化解历史遗留征地补偿纠纷17件。</p>
+
+            <h3>任职履历</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width:140px;">任职时期</th>
+                        <th style="width:220px;">职务</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2006—</td>
+                        <td>赤魍县人民政府 县长</td>
+                        <td style="color:#ff4d4d; font-weight:bold;">存活存活存活存活存活存活</td>
+                    </tr>
+                    <tr>
+                        <td>1987—2006</td>
+                        <td>（空白）</td>
+                        <td>原表此栏无字。2006年3月补填一行"2006.3—"，<strong>墨色较新，笔迹与本表其余各栏不吻合</strong></td>
+                    </tr>
+                    <tr>
+                        <td>1978—1987</td>
+                        <td>中共赤魍县委 书记</td>
+                        <td>见《人文风情·历代主要领导者简录》</td>
+                    </tr>
+                    <tr>
+                        <td>1975—1978</td>
+                        <td>赤魍县农业局 副局长</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>1962—1975</td>
+                        <td>青溪人民公社 农技员、文书</td>
+                        <td>参加工作时间：1962年9月</td>
+                    </tr>
+                    <tr>
+                        <td>19▓▓—1962</td>
+                        <td>▓▓▓▓▓▓▓▓</td>
+                        <td>该行受潮粘连，字迹不可辨</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>档案备注</h3>
+            <p>1987年3月，王德昌同志办理离任交接手续，其后档案记录中断。县档案馆现存其个人档案共计31页，其中<strong>第9页（1987年离任交接清单）缺失</strong>，缺页原因登记为"受潮损毁"。</p>
+
+            <p>另据馆藏登记，本页所附照片系1978年任县委书记时所摄。馆藏登记表"照片更换记录"一栏中，1987年、1995年、2003年三次应换照均未执行，原因栏统一填写为"<strong>本人未到</strong>"。</p>
+
+            <p>2006年3月，本卷曾被调阅一次。调阅登记表的调阅事由一栏填写为"核对在任情况"，调阅人签名栏空白。</p>
+
+            <div class="archive-note">
+                <p><strong>⚠ 查档提示：</strong>本页由检索词条"王德昌"解密后显示，未列入网站导航。如需查阅纸质原件，请持单位介绍信至县档案馆二楼查阅室办理。</p>
+                <p>另：本页所载任职时间与《人文风情·历代主要领导者简录》一致，其余各栏内容与网站其他页面存在不一致之处，一律以纸质档案为准。</p>
+            </div>
+
+            <h3>现存档案目录（节选）</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width:110px;">页码</th>
+                        <th>内容</th>
+                        <th style="width:130px;">状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>第1页</td>
+                        <td>个人履历登记表</td>
+                        <td>完好</td>
+                    </tr>
+                    <tr>
+                        <td>第2—5页</td>
+                        <td>1962—1975年工作记录、调动介绍信</td>
+                        <td>完好</td>
+                    </tr>
+                    <tr>
+                        <td>第6—8页</td>
+                        <td>1978年任命文件及任期内会议记录</td>
+                        <td>完好</td>
+                    </tr>
+                    <tr>
+                        <td><strong>第9页</strong></td>
+                        <td><strong>1987年离任交接清单（含随身物品登记表）</strong></td>
+                        <td style="color:#ff4d4d; font-weight:bold;">缺失</td>
+                    </tr>
+                    <tr>
+                        <td>第10—30页</td>
+                        <td>农业区划资料、县乡公路测绘图、水利工程台账</td>
+                        <td>完好</td>
+                    </tr>
+                    <tr>
+                        <td>第31页</td>
+                        <td>2006年3月新任职务登记表</td>
+                        <td>完好（墨色较新）</td>
+                    </tr>
+                    <tr>
+                        <td>附卷</td>
+                        <td>照片一帧（1978年摄）</td>
+                        <td style="color:#ff4d4d; font-weight:bold;">脸部严重受损</td>
+                    </tr>
+                    <tr>
+                        <td>第*^*&^页</td>
+                        <td style="color:#ff4d4d; font-weight:bold;">寄生体名单</td>
+                        <td style="color:#ff4d4d; font-weight:bold;">完好</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="note-line" style="margin-top:20px;">
+                档案编号：CW-1978-004　|　整理单位：赤魍县档案馆　|　最近更新：2006-03<br>
+            </p>
+        </main>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        Copyright © 2006 <span class="corrupt">赤魍县人民政府</span>他们都还没有死<br>
+        <span class="corrupt">建议使用 IE 6.0 以上浏览器，800x600 分辨率浏览本站</span><br>
+        您是第 000,012 位访客
+    </div>
+</div>
+
+<!-- 第9页内容摘要（1987年离任交接清单·随身物品登记表）：
+     登记物品共 1 件 —— 黑色折叠伞。
+     备注栏手写一行："照旧。"
+     移交人签字栏空白。 -->
+
+<script>
+(function () {
+    /* ============ 乱码引擎：部分文字会时不时变成乱码 ============ */
+    var GARBLE = "▓▒░█▚▞▀▄▖▗▘▝■□▣▤▥▦▧▨▩▪▫◊○◌◍◎●◐◑◒◓◔◕◖◗◜◝◞◟◠◡";
+
+    /* 把 UTF-8 字节按 GBK 解码，得到经典的“锟斤拷”式乱码 */
+    function mojibake(str) {
+        try {
+            var bytes = new TextEncoder().encode(str);
+            var out = new TextDecoder('gbk', { fatal: false }).decode(bytes);
+            return (out && out !== str) ? out : null;
+        } catch (e) { return null; }
+    }
+    /* 兜底：用方块符号打乱文本（纯英文时走这里） */
+    function scramble(str) {
+        var out = '';
+        for (var i = 0; i < str.length; i++) {
+            out += (Math.random() < 0.55)
+                ? GARBLE.charAt(Math.floor(Math.random() * GARBLE.length))
+                : str.charAt(i);
+        }
+        return out;
+    }
+    function garble(str) { return mojibake(str) || scramble(str); }
+
+    /* 1. 页面载入后，把标记为 .corrupt 的文字永久转成乱码 */
+    var perms = document.querySelectorAll('.corrupt');
+    for (var i = 0; i < perms.length; i++) {
+        perms[i].textContent = garble(perms[i].textContent);
+    }
+
+    /* 2. 收集可临时打乱码的文本节点（导航栏除外，保证还能点） */
+    var nodes = [];
+    (function collect() {
+        var walker = document.createTreeWalker(
+            document.querySelector('.container'),
+            NodeFilter.SHOW_TEXT,
+            { acceptNode: function (n) {
+                var t = n.textContent.trim();
+                if (t.length < 2) return NodeFilter.FILTER_REJECT;
+                if (n.parentNode.closest('.navbar')) return NodeFilter.FILTER_REJECT;
+                return NodeFilter.FILTER_ACCEPT;
+            } }
+        );
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+    })();
+
+    /* 3. 每隔 2~6 秒，随机让 1~3 处文字短暂变成乱码，再恢复原状 */
+    function corruptRound() {
+        var count = 1 + Math.floor(Math.random() * 3);
+        for (var i = 0; i < count; i++) {
+            var node = nodes[Math.floor(Math.random() * nodes.length)];
+            if (node.__busy) continue;
+            node.__busy = true;
+            var original = node.textContent;
+            node.textContent = garble(original);
+            (function (n, txt) {
+                setTimeout(function () {
+                    n.textContent = txt;
+                    n.__busy = false;
+                }, 200 + Math.random() * 600);
+            })(node, original);
+        }
+        setTimeout(corruptRound, 500 + Math.random() * 1000);
+    }
+    setTimeout(corruptRound, 1800);
+})();
+</script>
+</body>
+</html>

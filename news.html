@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>关于赤魍县境内发现无名男尸的情况通报 - 赤魍县人民政府官方网站</title>
+    <style>
+        /* ================= 全局设置 ================= */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background-color: #e8edf3; 
+            font-family: "宋体", sans-serif; 
+            font-size: 12px; 
+            color: #333; 
+        }
+        a { color: #333; text-decoration: none; }
+        a:hover { color: #cc0000; text-decoration: underline; }
+
+        /* ================= 页面总容器 ================= */
+        .container { 
+            width: 960px; 
+            margin: 0 auto; 
+            padding: 10px; 
+        }
+
+        /* ================= 顶部 Banner ================= */
+        .header {
+            background: linear-gradient(to bottom, #1c55a1 0%, #3a7bd5 100%);
+            padding: 20px 25px;
+            border-bottom: 3px solid #0e3a7a;
+        }
+        .header h1 { 
+            font-size: 26px; 
+            color: #fff; 
+            margin: 0; 
+            font-weight: bold; 
+            font-family: "黑体", sans-serif; 
+            letter-spacing: 2px; 
+        }
+        .header p { 
+            font-size: 12px; 
+            color: #c5d8f0; 
+            margin: 5px 0 0 0; 
+        }
+
+        /* ================= 导航栏 ================= */
+        .navbar {
+            background-color: #f0f2f5;
+            border-bottom: 2px solid #1c55a1;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .navbar a {
+            display: inline-block;
+            padding: 0 22px;
+            height: 38px;
+            line-height: 38px;
+            font-size: 14px;
+            font-family: "宋体", sans-serif;
+            color: #333;
+            border-right: 1px solid #ccc;
+            text-align: center;
+        }
+        .navbar a:first-child { border-left: 1px solid #ccc; }
+        .navbar a:hover {
+            background-color: #1c55a1;
+            color: #fff;
+            text-decoration: none;
+        }
+        .navbar a.active {
+            background-color: #1c55a1;
+            color: #fff;
+        }
+
+        /* ================= 公告栏 ================= */
+        .notice-bar {
+            background-color: #fffde6;
+            border: 1px solid #e0c070;
+            border-top: none;
+            height: 32px;
+            line-height: 32px;
+            padding: 0 10px;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .notice-bar .notice-label {
+            float: left;
+            color: #cc0000;
+            font-weight: bold;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .notice-bar .notice-content {
+            float: left;
+            margin-left: 10px;
+            color: #cc0000;
+            font-size: 12px;
+            white-space: nowrap;
+            max-width: 780px;
+            overflow: hidden;
+        }
+        .notice-bar .notice-more {
+            float: right;
+            color: #cc0000;
+            font-size: 12px;
+        }
+
+        /* ================= 主体双栏布局 ================= */
+        .main-content {
+            display: flex;
+            margin-top: 10px;
+            gap: 10px;
+        }
+
+        /* ---- 左侧栏 ---- */
+        .sidebar {
+            width: 220px;
+            flex-shrink: 0;
+        }
+        .sidebar-box {
+            background-color: #fff;
+            border: 1px solid #a8b9d0;
+            margin-bottom: 10px;
+        }
+        .sidebar-title {
+            background: linear-gradient(to bottom, #5b9bd5 0%, #3578c6 100%);
+            color: #fff;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 6px 10px;
+            font-family: "宋体", sans-serif;
+        }
+        .sidebar-body {
+            padding: 8px 10px;
+        }
+        .sidebar-body ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin: 0;
+        }
+        .sidebar-body li {
+            line-height: 26px;
+            font-size: 12px;
+        }
+        .sidebar-body li a.active-news {
+            color: #cc0000;
+            font-weight: bold;
+        }
+
+        /* 核心指标速览样式 */
+        .index-item {
+            display: flex;
+            justify-content: space-between;
+            line-height: 22px;
+            font-size: 12px;
+            border-bottom: 1px dashed #ddd;
+            padding: 2px 0;
+        }
+        .index-item .label { color: #555; }
+        .index-item .value { color: #1c55a1; font-weight: bold; }
+
+        /* ---- 右侧内容区 ---- */
+        .content-area {
+            flex: 1;
+            background-color: #fff;
+            border: 1px solid #a8b9d0;
+            padding: 15px 20px;
+            min-height: 500px;
+        }
+
+        /* === 返回按钮样式 === */
+        .back-btn-wrap {
+            margin-bottom: 8px;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 4px 14px;
+            background: linear-gradient(to bottom, #f8fafd 0%, #eaf0f8 100%);
+            border: 1px solid #a8b9d0;
+            color: #1c55a1;
+            font-size: 12px;
+            font-family: "宋体", sans-serif;
+            text-decoration: none;
+            line-height: 18px;
+            cursor: pointer;
+        }
+        .back-btn:hover {
+            background: linear-gradient(to bottom, #1c55a1 0%, #0e3a7a 100%);
+            color: #fff;
+            text-decoration: none;
+            border-color: #0e3a7a;
+        }
+
+        /* 新闻标题区 */
+        .article-title {
+            font-size: 20px;
+            color: #1c55a1;
+            text-align: center;
+            margin: 10px 0 5px 0;
+            font-family: "黑体", sans-serif;
+            font-weight: bold;
+            line-height: 30px;
+        }
+        .article-meta {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            padding: 8px 0 15px 0;
+            border-bottom: 1px dashed #ccc;
+            margin-bottom: 15px;
+        }
+        .article-meta span {
+            margin: 0 10px;
+        }
+
+        /* 新闻正文 */
+        .article-body p {
+            line-height: 26px;
+            text-indent: 2em;
+            margin: 10px 0;
+            text-align: justify;
+            font-size: 13px;
+        }
+        .article-body .subtitle {
+            font-size: 14px;
+            color: #1c55a1;
+            font-weight: bold;
+            text-indent: 0;
+            margin: 18px 0 8px 0;
+            padding-left: 8px;
+            border-left: 3px solid #1c55a1;
+        }
+
+        /* 信息卡片 */
+        .info-card {
+            background-color: #f8fafd;
+            border: 1px solid #a8b9d0;
+            padding: 12px 15px;
+            margin: 15px 0;
+            font-size: 12px;
+            line-height: 22px;
+        }
+        .info-card .card-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #1c55a1;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        .info-card table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .info-card td {
+            padding: 4px 8px;
+            border-bottom: 1px dashed #e0e0e0;
+            font-size: 12px;
+        }
+        .info-card td:first-child {
+            width: 80px;
+            color: #555;
+            white-space: nowrap;
+        }
+        .info-card td:last-child {
+            color: #333;
+        }
+
+        /* 声明框 */
+        .notice-box {
+            background-color: #fff8e6;
+            border: 1px solid #e0c070;
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-size: 12px;
+            line-height: 22px;
+            color: #665500;
+        }
+        .notice-box strong {
+            color: #cc0000;
+        }
+
+        /* 新闻导航 */
+        .article-nav {
+            border-top: 1px solid #ddd;
+            padding-top: 12px;
+            margin-top: 20px;
+            font-size: 12px;
+            line-height: 24px;
+        }
+        .article-nav a {
+            color: #1c55a1;
+        }
+
+        /* 分享与打印 */
+        .article-toolbar {
+            text-align: center;
+            padding: 10px 0;
+            margin: 10px 0;
+            border-top: 1px dashed #ccc;
+            border-bottom: 1px dashed #ccc;
+        }
+        .article-toolbar span {
+            display: inline-block;
+            padding: 3px 12px;
+            margin: 0 5px;
+            background: #f0f2f5;
+            border: 1px solid #ccc;
+            font-size: 12px;
+            color: #555;
+            cursor: pointer;
+        }
+        .article-toolbar span:hover {
+            background: #e0e0e0;
+        }
+
+        /* ================= 页脚 ================= */
+        .footer {
+            text-align: center;
+            padding: 15px 0;
+            color: #666;
+            line-height: 22px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ====== 顶部 Banner ====== -->
+    <div class="header">
+        <h1>赤魍县人民政府官方网站</h1>
+        <p>ChiWang County Official Homepage | 探索虚构边缘，感受独特风情</p>
+    </div>
+
+    <!-- ====== 导航栏 ====== -->
+    <nav class="navbar">
+        <span style="font-size:13px; color:#cc0000; font-weight:bold; letter-spacing:1px;">该页面现已被隐藏</span>
+    </nav>
+
+    <!-- ====== 公告栏 ====== -->
+    <div class="notice-bar">
+        <span class="notice-label">★ 公告：</span>
+        <span class="notice-content">关于赤魍县境内发现无名男尸的情况通报——请广大居民协助辨认</span>
+        <a href="#" class="notice-more">详情</a>
+    </div>
+
+    <!-- ====== 主体双栏 ====== -->
+    <div class="main-content">
+
+        <!-- 左侧栏 -->
+        <aside class="sidebar">
+            <!-- 核心指标速览 -->
+            <div class="sidebar-box">
+                <div class="sidebar-title">核心指标速览</div>
+                <div class="sidebar-body">
+                    <div class="index-item"><span class="label">辖区总面积：</span><span class="value">280 km²</span></div>
+                    <div class="index-item"><span class="label">常住人口：</span><span class="value">4.5 万人</span></div>
+                    <div class="index-item"><span class="label">下辖乡镇：</span><span class="value">5 镇 3 乡</span></div>
+                    <div class="index-item"><span class="label">GDP总值：</span><span class="value">12.8 亿元</span></div>
+                    <div class="index-item"><span class="label">森林覆盖率：</span><span class="value">68%</span></div>
+                </div>
+            </div>
+
+            <!-- 最新公告 -->
+            <div class="sidebar-box">
+                <div class="sidebar-title">最新公告</div>
+                <div class="sidebar-body">
+                    <ul>
+                        <li><a href="news_detail.html" class="active-news">关于发现无名男尸的情况通报</a></li>
+                        <li><a href="#">2006年度乡镇经济报告公示</a></li>
+                        <li><a href="#">夏季防汛工作部署通知</a></li>
+                        <li><a href="#">农村道路修缮工程招标</axia></li>
+                        <li><a href="#">村级卫生室建设进展</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 友情链接 -->
+            <div class="sidebar-box">
+                <div class="sidebar-title">友情链接</div>
+                <div class="sidebar-body">
+                    <ul>
+                        <li><a href="#">赤蟒河风景区</a></li>
+                        <li><a href="#">虚拟古镇联盟</a></li>
+                        <li><a href="#">周边县市门户</a></li>
+                        <li><a href="https://yidian.weather.com.cn/">天气预报</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 右侧内容区 -->
+        <main class="content-area">
+            
+            <!-- ★ 返回按钮 ★ -->
+            <div class="back-btn-wrap">
+                <a href="index.html" class="back-btn">◀ 返回首页</a>
+            </div>
+
+            <h1 class="article-title">关于赤魍县境内发现无名男尸的情况通报</h1>
+            <div class="article-meta">
+                <span>来源：赤魍县公安局</span>
+                <span>发布时间：2006-03-16 14:30</span>
+                <span>浏览次数：2,847</span>
+            </div>
+
+            <div class="article-body">
+                <p>2006年3月15日上午8时许，赤魍县公安局接到群众报警称，在赤蟒河下游河滩（枫林镇青溪村段）发现一具男性遗体。接警后，县公安局刑侦大队、技术中队及枫林镇派出所民警迅速赶赴现场开展勘查工作。</p>
+
+                <p class="subtitle">一、基本情况</p>
+                <p>经初步勘查，死者为男性，年龄约40至50岁，身高约170厘米，体态中等偏瘦。遗体被发现时位于赤蟒河南岸浅滩芦苇丛中，身着深蓝色夹克外套、灰色长裤及黑色布鞋。遗体表面未见明显外伤，初步排除暴力致死可能，具体死亡原因有待法医进一步鉴定。</p>
+
+                <div class="info-card">
+                    <div class="card-title">遗体特征信息</div>
+                    <table>
+                        <tr><td>性  别：</td><td>男</td></tr>
+                        <tr><td>预估年龄：</td><td>40—50 岁</td></tr>
+                        <tr><td>身  高：</td><td>约 170 厘米</td></tr>
+                        <tr><td>体  型：</td><td>中等偏瘦</td></tr>
+                        <tr><td>衣着特征：</td><td>深蓝色夹克外套、灰色长裤、黑色布鞋</td></tr>
+                        <tr><td>随身物品：</td><td><span id="umbrellaHint" title="这件东西也出现在另一份清单上" style="cursor:pointer; border-bottom:1px dotted #1c55a1;">上衣口袋内发现一把折叠雨伞</span>，无身份证件及手机</td></tr>
+                        <tr><td>发现地点：</td><td>赤蟒河南岸浅滩（枫林镇青溪村段）</td></tr>
+                        <tr><td>发现时间：</td><td>2006年3月15日 上午8时</td></tr>
+                    </table>
+                </div>
+
+                <p class="subtitle">二、调查进展</p>
+                <p>县公安局已成立专案组，由刑侦大队牵头，联合技术中队及辖区派出所开展以下工作：一是委托市法医鉴定中心对遗体进行系统尸检，预计5个工作日内出具鉴定报告；二是调取赤蟒河沿线及周边乡镇近7日内的监控视频，逐帧排查可疑线索；三是向辖区5镇3乡发布协查通告，走访沿岸村民及外来务工人员；四是将死者DNA信息录入全国公安机关DNA数据库进行比对。</p>
+
+                <p>截至发稿时，经排查赤魍县常住人口及近期流动人口登记信息，暂未发现与死者体貌特征相符的失踪人员。死者身份仍无法确认。</p>
+
+                <p class="subtitle">三、协查请求</p>
+                <p>为尽快确认死者身份、查明死因，现面向社会各界公开征集线索。如有认识符合上述特征人员、或近期有亲友失联的居民群众，请及时与赤魍县公安局刑侦大队联系。</p>
+
+                <div class="notice-box">
+                    <strong>联系信息：</strong><br>
+                    报警电话：110 或 0871-6688119（刑侦大队24小时值班）<br>
+                    联系人：张警官 / 刘警官<br>
+                    办公地址：赤魍县城关镇人民路12号 县公安局一楼刑侦大队<br><br>
+                    <strong>温馨提示：</strong>提供有效线索者，公安机关将依法予以保密。对协助确认死者身份或推动案件侦破有重大贡献的，将视情况给予适当奖励。
+                </div>
+
+                <p class="subtitle">四、公众提示</p>
+                <p>县公安局提醒广大居民：请勿对现场及周边区域进行拍摄、围观或传播未经证实的信息。案件调查进展将通过县政府官方网站及"赤魍发布"政务公众号统一发布，请公众不信谣、不传谣，共同维护良好的社会治安秩序。</p>
+
+                <p>后续调查情况将及时向社会公布。</p>
+
+                <p style="text-align:right; text-indent:0; margin-top:30px; color:#555;">
+                    赤魍县公安局<br>
+                    2026年9月26日
+                </p>
+            </div>
+
+            <!-- 工具栏 -->
+            <div class="article-toolbar">
+                <span onclick="window.print()">打印本页</span>
+                <span onclick="alert('已复制链接到剪贴板')">分享链接</span>
+                <span onclick="window.scrollTo(0,0)">返回顶部</span>
+            </div>
+
+            <!-- 上下篇导航 -->
+            <div class="article-nav">
+                上一篇：<a href="#">关于赤魍县2026年秋季防汛工作的通知</a><br>
+                下一篇：暂无
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ====== 页脚 ====== -->
+    <div class="footer">
+        Copyright © 2006 赤魍县人民政府 All Rights Reserved<br>
+        建议使用 IE 6.0 以上浏览器，800x600 分辨率浏览本站<br>
+        您是第 003,847 位访客
+    </div>
+
+</div>
+<script>
+(function() {
+    var el = document.getElementById('umbrellaHint');
+    if (!el) return;
+    el.addEventListener('click', function() {
+        alert('同一件物品也登记在一份已经「受潮损毁」的清单上。\n闸门上的字被刮去的那一年。');
+    });
+})();
+</script>
+</body>
+</html>
