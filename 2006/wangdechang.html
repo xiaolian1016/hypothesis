@@ -269,6 +269,7 @@
             color: #e0a46a;
         }
         .archive-note p { text-indent: 0; margin: 5px 0; color: #e0a46a; }
+        .need-login-phrase { display: none; }
         .mark-kouhao {
             color: #e0a46a;
             font-weight: bold;
@@ -471,7 +472,7 @@
 
     <!-- 页脚 -->
     <div class="footer">
-        Copyright © 2006 <span class="corrupt">赤魍县人民政府</span>他们都还没有死<br>
+        Copyright © 2006 <span class="corrupt">赤魍县人民政府</span><span class="need-login-phrase">他们都还没有死</span><br>
         <span class="corrupt">建议使用 IE 6.0 以上浏览器，800x600 分辨率浏览本站</span><br>
         您是第 000,012 位访客
     </div>
@@ -548,6 +549,15 @@
         setTimeout(corruptRound, 500 + Math.random() * 1000);
     }
     setTimeout(corruptRound, 1800);
+    try {
+        var user = JSON.parse(localStorage.getItem('chiwang_login_user') || 'null');
+        if (user && user.name) {
+            var els = document.querySelectorAll('.need-login-phrase');
+            for (var i = 0; i < els.length; i++) {
+                els[i].style.display = (els[i].tagName === 'P') ? 'block' : 'inline';
+            }
+        }
+    } catch (e) {}
 })();
 </script>
 </body>

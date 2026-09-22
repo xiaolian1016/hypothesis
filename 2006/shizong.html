@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>赤魍县失踪及无名人口登记（内部） - 赤魍县人民政府官方网站</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e8edf3;
+            font-family: "宋体", sans-serif;
+            font-size: 12px;
+            color: #333;
+        }
+        a { color: #333; text-decoration: none; }
+        a:hover { color: #cc0000; text-decoration: underline; }
+
+        .container {
+            width: 960px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .header {
+            background: linear-gradient(to bottom, #1c55a1 0%, #3a7bd5 100%);
+            padding: 20px 25px;
+            border-bottom: 3px solid #0e3a7a;
+        }
+        .header h1 {
+            font-size: 26px;
+            color: #fff;
+            margin: 0;
+            font-weight: bold;
+            font-family: "黑体", sans-serif;
+            letter-spacing: 2px;
+        }
+        .header p {
+            font-size: 12px;
+            color: #c5d8f0;
+            margin: 5px 0 0 0;
+        }
+
+        .navbar {
+            background-color: #f0f2f5;
+            border-bottom: 2px solid #1c55a1;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .navbar a {
+            display: inline-block;
+            padding: 0 22px;
+            height: 38px;
+            line-height: 38px;
+            font-size: 14px;
+            font-family: "宋体", sans-serif;
+            color: #333;
+            border-right: 1px solid #ccc;
+            text-align: center;
+        }
+        .navbar a:first-child { border-left: 1px solid #ccc; }
+        .navbar a:hover {
+            background-color: #1c55a1;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .notice-bar {
+            background-color: #fffde6;
+            border: 1px solid #e0c070;
+            border-top: none;
+            height: 32px;
+            line-height: 32px;
+            padding: 0 10px;
+            margin: 0;
+            overflow: hidden;
+        }
+        .notice-bar .notice-label {
+            float: left;
+            color: #cc0000;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .notice-bar .notice-content {
+            float: left;
+            margin-left: 10px;
+            color: #cc0000;
+            font-size: 12px;
+        }
+
+        .main-content {
+            display: flex;
+            margin-top: 10px;
+            gap: 10px;
+        }
+        .sidebar { width: 220px; flex-shrink: 0; }
+        .sidebar-box {
+            background-color: #fff;
+            border: 1px solid #a8b9d0;
+            margin-bottom: 10px;
+        }
+        .sidebar-title {
+            background: linear-gradient(to bottom, #5b9bd5 0%, #3578c6 100%);
+            color: #fff;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 6px 10px;
+        }
+        .sidebar-body { padding: 8px 10px; }
+        .sidebar-body ul { list-style: disc; padding-left: 20px; margin: 0; }
+        .sidebar-body li { line-height: 26px; font-size: 12px; }
+        .index-item {
+            display: flex;
+            justify-content: space-between;
+            line-height: 22px;
+            font-size: 12px;
+            border-bottom: 1px dashed #ddd;
+            padding: 2px 0;
+        }
+        .index-item .label { color: #555; }
+        .index-item .value { color: #1c55a1; font-weight: bold; }
+
+        .content-area {
+            flex: 1;
+            background-color: #fff;
+            border: 1px solid #a8b9d0;
+            padding: 15px 20px;
+            min-height: 300px;
+        }
+        .content-area h2 {
+            font-size: 18px;
+            color: #1c55a1;
+            margin-top: 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+            font-family: "黑体", sans-serif;
+        }
+        .content-area h3 {
+            font-size: 14px;
+            color: #1c55a1;
+            margin: 18px 0 10px 0;
+            padding-left: 8px;
+            border-left: 3px solid #1c55a1;
+            font-family: "黑体", sans-serif;
+        }
+        .content-area p {
+            line-height: 24px;
+            text-indent: 2em;
+            margin: 10px 0;
+            text-align: justify;
+        }
+        .content-area strong { color: #0e3a7a; }
+
+        .need-login-phrase { display: none; }
+        .back-btn {
+            display: inline-block;
+            padding: 2px 10px;
+            background: #f0f2f5;
+            border: 1px solid #ccc;
+            color: #1c55a1;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        .back-btn:hover { background: #1c55a1; color: #fff; text-decoration: none; }
+
+        .stamp {
+            background-color: #fff8e6;
+            border: 1px solid #e0c070;
+            padding: 10px 15px;
+            margin: 12px 0 16px 0;
+            font-size: 12px;
+            line-height: 22px;
+            color: #665500;
+        }
+        .stamp p { text-indent: 0; margin: 4px 0; color: #665500; }
+        .stamp strong { color: #cc0000; }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        .data-table th {
+            background-color: #eaf0f8;
+            border: 1px solid #a8b9d0;
+            padding: 6px 8px;
+            text-align: left;
+            font-weight: bold;
+            color: #1c55a1;
+            white-space: nowrap;
+        }
+        .data-table td {
+            border: 1px solid #ccc;
+            padding: 6px 8px;
+            vertical-align: top;
+        }
+        .data-table tr:nth-child(even) { background-color: #f8fafd; }
+
+        .open-row td { color: #888; }
+        .unid td { color: #8a1515; }
+
+        .footnote {
+            margin-top: 18px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+            color: #777;
+            font-size: 12px;
+            line-height: 20px;
+        }
+        .footnote p { text-indent: 0; margin: 4px 0; }
+
+        .footer {
+            text-align: center;
+            padding: 15px 0;
+            color: #666;
+            line-height: 22px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>赤魍县人民政府官方网站</h1>
+        <p>ChiWang County Official Homepage | 探索虚构边缘，感受独特风情</p>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html">首页</a>
+        <a href="country.html">乡镇概况</a>
+        <a href="sight.html">自然风光</a>
+        <a href="culture.html">人文风情</a>
+        <a href="contact.html">联系我们</a>
+    </nav>
+
+    <div class="notice-bar">
+        <span class="notice-label">★ 内部：</span>
+        <span class="notice-content">县公安局刑侦大队长期未破失踪 / 无名尸体台账。非正式公开栏目。</span>
+    </div>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <div class="sidebar-box">
+                <div class="sidebar-title">台账速记</div>
+                <div class="sidebar-body">
+                    <div class="index-item"><span class="label">卷宗：</span><span class="value">CW-MIS-001</span></div>
+                    <div class="index-item"><span class="label">在册：</span><span class="value">32 人</span></div>
+                    <div class="index-item"><span class="label">立案：</span><span class="value">11</span></div>
+                    <div class="index-item"><span class="label">未立案：</span><span class="value">21</span></div>
+                    <div class="index-item"><span class="label">无名尸体：</span><span class="value">6</span></div>
+                    <div class="index-item"><span class="label">破获：</span><span class="value">0</span></div>
+                </div>
+            </div>
+            <div class="sidebar-box">
+                <div class="sidebar-title">相关条目</div>
+                <div class="sidebar-body">
+                    <ul>
+                        <li><a href="news.html">无名男尸通报</a></li>
+                        <li><a href="chiwanghe.html">赤魍河科考纪要</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <a href="index.html" class="back-btn">◀ 返回首页</a>
+            <h2>赤魍县失踪及无名人口登记</h2>
+
+            <div class="stamp">
+                <p><strong>整理说明：</strong>本表汇集 1952—2006 年县公安局接到的失踪报告、户口未销人员，以及浅滩、护林房、河岸发现的无名尸体。公开结案口径多为溺亡、病故、工伤、调动。凡「结案」栏写「未破」者，均无完整遗骸或身份未能与户籍闭合。</p>
+                <p>内部卷 CW-HOST-001 与本表部分人名、时间重叠，可互见。仍在岗、仍在任、户籍未报失踪者，不列入本表。</p>
+            </div>
+
+            <h3>一、有姓名、已报失踪或户口异常</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>姓名</th>
+                        <th>当时身份</th>
+                        <th>失踪 / 发现</th>
+                        <th>公开口径</th>
+                        <th>内部对照</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>M-01</td>
+                        <td>吴绍棠</td>
+                        <td>县水利局渠首看守</td>
+                        <td>1960 冬至</td>
+                        <td>值班房肺疾，未火化</td>
+                        <td>P-01 序 03</td>
+                    </tr>
+                    <tr>
+                        <td>M-02</td>
+                        <td>马培元</td>
+                        <td>枫林镇文书</td>
+                        <td>1964-03</td>
+                        <td>浅滩无名（后据衣着追认，家属未认领）</td>
+                        <td>P-01 序 04；第 7 页同日「受潮」</td>
+                    </tr>
+                    <tr>
+                        <td>M-03</td>
+                        <td>丁长海</td>
+                        <td>青溪乡生产队长</td>
+                        <td>1969 冬至</td>
+                        <td>河工塌方，未见尸</td>
+                        <td>P-01 序 05</td>
+                    </tr>
+                    <tr>
+                        <td>M-04</td>
+                        <td>邱木生</td>
+                        <td>城关镇粮站保管</td>
+                        <td>1974-05</td>
+                        <td>失踪，户口未销</td>
+                        <td>P-01 序 06</td>
+                    </tr>
+                    <tr>
+                        <td>M-05</td>
+                        <td>姜维山</td>
+                        <td>县一中总务</td>
+                        <td>1981 冬至</td>
+                        <td>校内暴卒，未尸检</td>
+                        <td>P-01 序 07；沈怀德撤队同年</td>
+                    </tr>
+                    <tr>
+                        <td>M-06</td>
+                        <td>曹福来</td>
+                        <td>县供销社采购</td>
+                        <td>1964-03</td>
+                        <td>出差未归</td>
+                        <td>P-02 序 02</td>
+                    </tr>
+                    <tr>
+                        <td>M-07</td>
+                        <td>宋桂珍</td>
+                        <td>县妇联干事</td>
+                        <td>1968 冬至</td>
+                        <td>家属报「人还在，不像她」；未立案</td>
+                        <td>P-02 序 04</td>
+                    </tr>
+                    <tr>
+                        <td>M-08</td>
+                        <td>吕开平</td>
+                        <td>县革委会办事组</td>
+                        <td>1971-09</td>
+                        <td>青溪浅滩无名，后据工作证残片</td>
+                        <td>P-02 序 05</td>
+                    </tr>
+                    <tr>
+                        <td>M-09</td>
+                        <td>谭小河</td>
+                        <td>赤蟒河漂木工</td>
+                        <td>1979 冬至</td>
+                        <td>落水，未见尸</td>
+                        <td>P-02 序 06；普查队入场前夜</td>
+                    </tr>
+                    <tr>
+                        <td>M-10</td>
+                        <td>魏长林</td>
+                        <td>枫林镇民兵连长</td>
+                        <td>1971-09</td>
+                        <td>复员未报到</td>
+                        <td>P-03 序 02</td>
+                    </tr>
+                    <tr>
+                        <td>M-11</td>
+                        <td>胡二牛</td>
+                        <td>云雾山护林员</td>
+                        <td>1978-03</td>
+                        <td>护林房发现遗体，报野兽拖走</td>
+                        <td>P-03 序 04</td>
+                    </tr>
+                    <tr>
+                        <td>M-12</td>
+                        <td>潘秀英</td>
+                        <td>县医院护士</td>
+                        <td>1983-06</td>
+                        <td>夜班后失踪</td>
+                        <td>P-03 序 05</td>
+                    </tr>
+                    <tr>
+                        <td>M-13</td>
+                        <td>程万里</td>
+                        <td>客运站售票员</td>
+                        <td>1991 冬至</td>
+                        <td>浅滩一具穿站服，未确认</td>
+                        <td>P-03 序 06</td>
+                    </tr>
+                    <tr>
+                        <td>M-14</td>
+                        <td>石永贵</td>
+                        <td>县农业局干事</td>
+                        <td>1978-03</td>
+                        <td>调动，本人未到</td>
+                        <td>P-04 序 02</td>
+                    </tr>
+                    <tr>
+                        <td>M-15</td>
+                        <td>沈怀德</td>
+                        <td>省地质矿产局第七普查队</td>
+                        <td>1981 冬至</td>
+                        <td>未随队返回，户籍未迁出</td>
+                        <td>P-04 序 04；在队三日后失踪。同年浅滩无名男尸未并案。</td>
+                    </tr>
+                    <tr>
+                        <td>M-16</td>
+                        <td>姚春生</td>
+                        <td>桃源镇茶厂会计</td>
+                        <td>1993 冬至</td>
+                        <td>账在人走</td>
+                        <td>P-04 序 06</td>
+                    </tr>
+                    <tr>
+                        <td>M-17</td>
+                        <td>方国栋</td>
+                        <td>县财政局科员</td>
+                        <td>2001-05</td>
+                        <td>调令空白；科室仍称其「在上班」</td>
+                        <td>P-04 序 07。对外未报失踪。</td>
+                    </tr>
+                    <tr>
+                        <td>M-18</td>
+                        <td>顾清禾</td>
+                        <td>省生态研究所观测组</td>
+                        <td>2006-03-15</td>
+                        <td>未随队返回，户籍未迁</td>
+                        <td>P-04 序 08。与当日浅滩深蓝夹克尸体不是同一人。</td>
+                    </tr>
+                    <tr>
+                        <td>M-19</td>
+                        <td>金有财</td>
+                        <td>城关镇食堂大师傅</td>
+                        <td>1982 冬至</td>
+                        <td>下班未归</td>
+                        <td>P-05 序 02</td>
+                    </tr>
+                    <tr>
+                        <td>M-20</td>
+                        <td>谢明亮</td>
+                        <td>县计委科员</td>
+                        <td>1987-09</td>
+                        <td>请调未果，人消失</td>
+                        <td>P-05 序 03</td>
+                    </tr>
+                    <tr>
+                        <td>M-21</td>
+                        <td>倪秋兰</td>
+                        <td>县招待所服务员</td>
+                        <td>1995-03</td>
+                        <td>后厨煤气，未见完整遗骸</td>
+                        <td>P-05 序 05</td>
+                    </tr>
+                    <tr>
+                        <td>M-22</td>
+                        <td>侯大顺</td>
+                        <td>古法造纸工坊工匠</td>
+                        <td>2002 冬至</td>
+                        <td>人已不在坊内，指纹仍出现在申报材料</td>
+                        <td>P-05 序 06</td>
+                    </tr>
+                    <tr>
+                        <td>M-23</td>
+                        <td>吴彩云</td>
+                        <td>枫林镇小学校长</td>
+                        <td>1992-03</td>
+                        <td>病退，本人未露面</td>
+                        <td>P-06 序 02。未立案。</td>
+                    </tr>
+                    <tr>
+                        <td>M-24</td>
+                        <td>郑海波</td>
+                        <td>县文化局科员</td>
+                        <td>1995-03</td>
+                        <td>借调未归</td>
+                        <td>P-06 序 03</td>
+                    </tr>
+                    <tr>
+                        <td>M-25</td>
+                        <td>田素梅</td>
+                        <td>非遗工坊讲解员</td>
+                        <td>2001-08</td>
+                        <td>辞职，无去向</td>
+                        <td>P-06 序 05</td>
+                    </tr>
+                    <tr>
+                        <td>M-26</td>
+                        <td>周阿婆</td>
+                        <td>青溪村接生婆</td>
+                        <td>2005-12-21</td>
+                        <td>村中称「回去了」，未报户口</td>
+                        <td>P-06 序 07</td>
+                    </tr>
+                    <tr>
+                        <td>M-27</td>
+                        <td>钱大山</td>
+                        <td>县计委驾驶员</td>
+                        <td>1990-04</td>
+                        <td>车在，人在河对岸，无外伤，未认领</td>
+                        <td>P-07 序 02</td>
+                    </tr>
+                    <tr>
+                        <td>M-28</td>
+                        <td>冯志强</td>
+                        <td>旅游开发办科员</td>
+                        <td>1996 冬至</td>
+                        <td>下乡未归</td>
+                        <td>P-07 序 03</td>
+                    </tr>
+                    <tr>
+                        <td>M-29</td>
+                        <td>「老白」</td>
+                        <td>云栖山居店主</td>
+                        <td>2005-11</td>
+                        <td>店还开，老板换了口音；未立案</td>
+                        <td>P-07 序 05</td>
+                    </tr>
+                    <tr>
+                        <td>M-30</td>
+                        <td>崔建军</td>
+                        <td>青溪乡文书</td>
+                        <td>1994-06</td>
+                        <td>请长假后未回</td>
+                        <td>P-08 序 02</td>
+                    </tr>
+                    <tr>
+                        <td>M-31</td>
+                        <td>孟庆海</td>
+                        <td>县农业局副局长秘书</td>
+                        <td>1998 冬至</td>
+                        <td>岗位在，无人记得长相</td>
+                        <td>P-08 序 03。未立案。</td>
+                    </tr>
+                    <tr>
+                        <td>M-32</td>
+                        <td>韩冬生</td>
+                        <td>副县长司机</td>
+                        <td>2004 冬至</td>
+                        <td>出车未归，车开回大院</td>
+                        <td>P-08 序 05</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>二、无名尸体（无法与户籍闭合）</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>发现时间</th>
+                        <th>地点 / 特征</th>
+                        <th>公开处理</th>
+                        <th>内部对照</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="unid">
+                        <td>U-01</td>
+                        <td>1952-08 前后</td>
+                        <td>青溪村河岸，无户籍夜行人</td>
+                        <td>未立案。乡土志称「饮赤者」。</td>
+                        <td>P-01 序 01</td>
+                    </tr>
+                    <tr class="unid">
+                        <td>U-02</td>
+                        <td>1958 冬至</td>
+                        <td>赤魍河支汊溺亡，报失足</td>
+                        <td>就地掩埋</td>
+                        <td>P-02 贺立本原主</td>
+                    </tr>
+                    <tr class="unid">
+                        <td>U-03</td>
+                        <td>1963 冬至</td>
+                        <td>人武部冬训落水</td>
+                        <td>按工伤</td>
+                        <td>P-03 孙克勤原主</td>
+                    </tr>
+                    <tr class="unid">
+                        <td>U-04</td>
+                        <td>1981 冬至</td>
+                        <td>青溪浅滩中年男尸，无证件</td>
+                        <td>无名，未与沈怀德并案</td>
+                        <td>P-04 序 04</td>
+                    </tr>
+                    <tr class="unid">
+                        <td>U-05</td>
+                        <td>1972 冬至</td>
+                        <td>农机站车间事故</td>
+                        <td>工伤</td>
+                        <td>P-05 罗振山原主</td>
+                    </tr>
+                    <tr class="unid">
+                        <td>U-06</td>
+                        <td>2006-03-15</td>
+                        <td>青溪浅滩，深蓝夹克，口袋折叠雨伞，无证件</td>
+                        <td>见本站隐藏通报。排除暴力致死。</td>
+                        <td>P-08 HOST-07。不是顾清禾。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>三、不列入本表的人</h3>
+            <p>以下人员对外仍「在任 / 在岗」，故公安台账无失踪记录：陈守仁（档案写调动）、贺立本、孙克勤、王德昌、罗振山、李慧芳（调令空白）、赵建国（简介页未改职务）、周明远；以及现用身份范致、林雨涵、城关摊贩、云雾山养护工、档案馆照片室临工、赤蟒河码头检票。另：本县桃源镇常住人口<strong>范晨星</strong>户籍未销、未立案，不在本表——见信访比对摘要。</p>
+            <p class="need-login-phrase">他们都还没有死。所以不在这张表上。</p>
+
+            <div class="footnote">
+                <p>卷宗编号：CW-MIS-001　|　整理单位：赤魍县公安局刑侦大队 / 县档案馆转载　|　最近核对：2006-05</p>
+                <p>检索词：失踪人口　失踪　无名尸体。对照卷：CW-HOST-001（寄生体名单，需特定登录身份）。</p>
+            </div>
+        </main>
+    </div>
+
+    <div class="footer">
+        Copyright © 2006 赤魍县人民政府 All Rights Reserved<br>
+        建议使用 IE 6.0 以上浏览器，800x600 分辨率浏览本站<br>
+        您是第 003,847 位访客
+    </div>
+
+</div>
+<script>
+(function() {
+    try {
+        var user = JSON.parse(localStorage.getItem('chiwang_login_user') || 'null');
+        if (user && user.name) {
+            var els = document.querySelectorAll('.need-login-phrase');
+            for (var i = 0; i < els.length; i++) {
+                els[i].style.display = (els[i].tagName === 'P') ? 'block' : 'inline';
+            }
+        }
+    } catch (e) {}
+})();
+</script>
+</body>
+</html>

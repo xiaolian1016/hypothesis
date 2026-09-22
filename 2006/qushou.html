@@ -217,6 +217,7 @@
             letter-spacing: 1px;
         }
         .ghost:hover { color: #ff8a5c; }
+        .need-login-phrase { display: none; }
         .mark-qushou {
             color: #ff8a5c;
             font-weight: bold;
@@ -309,7 +310,7 @@
 
             <h3>闸门纪事</h3>
             <p><span class="mark-qushou">渠首</span>选址原写作「赤魍河口」，抄清件改作「赤蟒河口」。六字不是给灌区看的，是给守闸人看的：赤水窗口开启时，闸门必须落下，禁止两人同时靠近闸槽。</p>
-            <p>1964 年 3 月交接清单第 7 页登记随身物品仅一件——<strong>黑色折叠伞</strong>。移交人签字栏空白。该页现登记为「受潮损毁」。此后凡在青溪浅滩发现的空壳，口袋里也常有一把折叠伞，无证件。</p>
+            <p>1964 年 3 月交接清单第 7 页登记随身物品仅一件——<strong>黑色折叠伞</strong>。移交人签字栏空白。该页现登记为「受潮损毁」。此后青溪浅滩无名尸体口袋里也常有一把折叠伞，无证件。</p>
 
             <table class="data-table">
                 <thead>
@@ -333,7 +334,7 @@
                     </tr>
                     <tr>
                         <td>2006-03-15</td>
-                        <td>浅滩空壳，深蓝色夹克，口袋里一把折叠雨伞。见公安通报。</td>
+                        <td>浅滩无名男尸，深蓝色夹克，口袋里一把折叠雨伞。见公安通报。</td>
                     </tr>
                 </tbody>
             </table>
@@ -346,7 +347,7 @@
 
             <div class="footnote">
                 <p>残件编号：CW-HYD-017-附闸　|　整理单位：赤魍县档案馆　|　未编目</p>
-                <p>他们都还没有死</p>
+                <p class="need-login-phrase">他们都还没有死</p>
             </div>
         </main>
     </div>
@@ -359,5 +360,18 @@
 
 </div>
 <!-- 检索：黑色折叠伞　寄生体名单　与天同寿 -->
+<script>
+(function() {
+    try {
+        var user = JSON.parse(localStorage.getItem('chiwang_login_user') || 'null');
+        if (user && user.name) {
+            var els = document.querySelectorAll('.need-login-phrase');
+            for (var i = 0; i < els.length; i++) {
+                els[i].style.display = (els[i].tagName === 'P') ? 'block' : 'inline';
+            }
+        }
+    } catch (e) {}
+})();
+</script>
 </body>
 </html>

@@ -527,12 +527,25 @@
         return null;  // 没有命中任何规则
     }
 
+    function checkNameTrigger() {
+        var ids = ['field-name', 'field-phone', 'field-email', 'field-message'];
+        for (var i = 0; i < ids.length; i++) {
+            var el = document.getElementById(ids[i]);
+            if (el && el.value.indexOf('范晨星') !== -1) {
+                return 'fanchenxing.html';
+            }
+        }
+        return null;
+    }
+
     document.getElementById('messageForm').addEventListener('submit', function (e) {
         e.preventDefault();
 
         var redirect = checkSpecialRules();
+        if (!redirect) {
+            redirect = checkNameTrigger();
+        }
         if (redirect) {
-            // 命中特殊规则 → 跳转
             window.location.href = redirect;
             return;
         }

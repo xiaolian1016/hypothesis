@@ -410,8 +410,8 @@
         {
             keywords: ['王德昌'],
             page: 'wangdechang.html',
-            hint: '我是谁',
-            password: '范致'
+            hint: '赤魍河里有什么',
+            password: '赤魍素'
         },
         {
             keywords: ['李慧芳'],
@@ -422,6 +422,10 @@
         {
             keywords: ['赵建国'],
             page: 'zhaojianguo.html'
+        },
+        {
+            keywords: ['范晨星'],
+            page: 'fanchenxing.html'
         },
         {
             keywords: ['赤魍河'],
@@ -441,11 +445,16 @@
         },
         {
             keywords: ['他们都还没有死'],
-            page: 'nishi.html'
+            page: 'nishi.html',
+            needLogin: true
         },
         {
             keywords: ['口号'],
             page: 'kouhao.html'
+        },
+        {
+            keywords: ['失踪人口', '失踪', '无名尸体'],
+            page: 'shizong.html'
         },
         {
             keywords: ['乡镇', '概况', '行政区划', '面积', '人口', 'GDP', '经济'],
@@ -494,6 +503,10 @@
             var rule = searchRules[i];
             for (var j = 0; j < rule.keywords.length; j++) {
                 if (query.indexOf(rule.keywords[j]) !== -1) {
+
+                    if (rule.needLogin && !getLoginUser()) {
+                        continue;
+                    }
 
                     // 寄生体名单：按登录身份分流
                     if (rule.hostList) {
