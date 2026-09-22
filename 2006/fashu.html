@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>页面无法显示 - 赤魍县人民政府官方网站</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e8edf3;
+            font-family: "宋体", sans-serif;
+            font-size: 12px;
+            color: #333;
+        }
+        a { color: #333; text-decoration: none; }
+        a:hover { color: #cc0000; text-decoration: underline; }
+
+        .container {
+            width: 960px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .header {
+            background: linear-gradient(to bottom, #1c55a1 0%, #3a7bd5 100%);
+            padding: 20px 25px;
+            border-bottom: 3px solid #0e3a7a;
+        }
+        .header h1 {
+            font-size: 26px;
+            color: #fff;
+            margin: 0;
+            font-weight: bold;
+            font-family: "黑体", sans-serif;
+            letter-spacing: 2px;
+        }
+        .header p {
+            font-size: 12px;
+            color: #c5d8f0;
+            margin: 5px 0 0 0;
+        }
+
+        .navbar {
+            background-color: #f0f2f5;
+            border-bottom: 2px solid #1c55a1;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .navbar a {
+            display: inline-block;
+            padding: 0 22px;
+            height: 38px;
+            line-height: 38px;
+            font-size: 14px;
+            font-family: "宋体", sans-serif;
+            color: #333;
+            border-right: 1px solid #ccc;
+            text-align: center;
+        }
+        .navbar a:first-child { border-left: 1px solid #ccc; }
+        .navbar a:hover {
+            background-color: #1c55a1;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .notice-bar {
+            background-color: #fffde6;
+            border: 1px solid #e0c070;
+            border-top: none;
+            height: 32px;
+            line-height: 32px;
+            padding: 0 10px;
+            margin: 0;
+            overflow: hidden;
+        }
+        .notice-bar .notice-label {
+            float: left;
+            color: #cc0000;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .notice-bar .notice-content {
+            float: left;
+            margin-left: 10px;
+            color: #cc0000;
+            font-size: 12px;
+            max-width: 720px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .main-content {
+            display: flex;
+            margin-top: 10px;
+            gap: 10px;
+        }
+        .sidebar { width: 220px; flex-shrink: 0; }
+        .sidebar-box {
+            background-color: #fff;
+            border: 1px solid #a8b9d0;
+            margin-bottom: 10px;
+        }
+        .sidebar-title {
+            background: linear-gradient(to bottom, #5b9bd5 0%, #3578c6 100%);
+            color: #fff;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 6px 10px;
+        }
+        .sidebar-body { padding: 8px 10px; }
+        .sidebar-body ul { list-style: disc; padding-left: 20px; margin: 0; }
+        .sidebar-body li { line-height: 26px; font-size: 12px; }
+        .index-item {
+            display: flex;
+            justify-content: space-between;
+            line-height: 22px;
+            font-size: 12px;
+            border-bottom: 1px dashed #ddd;
+            padding: 2px 0;
+        }
+        .index-item .label { color: #555; }
+        .index-item .value { color: #1c55a1; font-weight: bold; }
+
+        .content-area {
+            flex: 1;
+            background-color: #fff;
+            border: 1px solid #a8b9d0;
+            padding: 15px 20px;
+            min-height: 300px;
+        }
+        .content-area h2 {
+            font-size: 18px;
+            color: #1c55a1;
+            margin-top: 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+            font-family: "黑体", sans-serif;
+        }
+        .content-area h3 {
+            font-size: 14px;
+            color: #1c55a1;
+            margin: 18px 0 10px 0;
+            padding-left: 8px;
+            border-left: 3px solid #1c55a1;
+            font-family: "黑体", sans-serif;
+        }
+        .content-area p {
+            line-height: 24px;
+            text-indent: 2em;
+            margin: 10px 0;
+            text-align: justify;
+        }
+        .content-area strong { color: #0e3a7a; }
+
+        .back-btn {
+            display: inline-block;
+            padding: 2px 10px;
+            background: #f0f2f5;
+            border: 1px solid #ccc;
+            color: #1c55a1;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        .back-btn:hover { background: #1c55a1; color: #fff; text-decoration: none; }
+
+        .err {
+            background: #f4f4f4;
+            border: 1px dashed #ccc;
+            color: #888;
+            padding: 8px 12px;
+            margin: 10px 0;
+            font-size: 12px;
+            line-height: 20px;
+        }
+        .err p { text-indent: 0; margin: 2px 0; color: #888; }
+
+        .scan {
+            background: #f7f9fc;
+            border: 1px solid #c5d3e6;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-family: "楷体", "宋体", serif;
+            line-height: 26px;
+            color: #444;
+        }
+        .scan p { text-indent: 0; margin: 4px 0; }
+
+        .redact {
+            background: #222;
+            color: #222;
+            padding: 0 6px;
+            letter-spacing: 3px;
+            cursor: default;
+            user-select: none;
+        }
+        .redact:hover {
+            background: #eee;
+            color: #8a1515;
+            user-select: text;
+        }
+
+        .ghost-ink {
+            color: #fff;
+        }
+        .ghost-ink:hover, .ghost-ink::selection {
+            color: #8a1515;
+            background: #fff0f0;
+        }
+
+        .mark-qushou {
+            color: #8a1515;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-bottom: 1px dashed #8a1515;
+            padding: 0 1px;
+        }
+        .mark-kouhao {
+            color: #6b3a00;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-bottom: 1px dashed #6b3a00;
+            padding: 0 1px;
+        }
+
+        .step-list { list-style: none; padding: 0; margin: 8px 0; }
+        .step-list li {
+            border-bottom: 1px dashed #ddd;
+            padding: 6px 0;
+            line-height: 22px;
+        }
+        .step-n {
+            display: inline-block;
+            width: 42px;
+            color: #1c55a1;
+            font-weight: bold;
+        }
+        .missing {
+            color: #aaa;
+            font-style: italic;
+            cursor: pointer;
+            border-bottom: 1px dotted #aaa;
+        }
+
+        .img-fail {
+            height: 86px;
+            border: 1px dashed #ccc;
+            background: #e8edf3;
+            color: #888;
+            text-align: center;
+            line-height: 86px;
+            margin: 10px 0;
+            font-size: 12px;
+        }
+
+        .footnote {
+            margin-top: 18px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+            color: #777;
+            font-size: 12px;
+            line-height: 20px;
+        }
+        .footnote p { text-indent: 0; margin: 4px 0; }
+
+        .footer {
+            text-align: center;
+            padding: 15px 0;
+            color: #666;
+            line-height: 22px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .blink {
+            animation: blink 1.6s step-end infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>赤魍县人民政府官方网站</h1>
+        <p>ChiWang County Official Homepage | 探索虚构边缘，感受独特风情</p>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html">首页</a>
+        <a href="country.html">乡镇概况</a>
+        <a href="sight.html">自然风光</a>
+        <a href="culture.html">人文风情</a>
+        <a href="contact.html">联系我们</a>
+    </nav>
+
+    <div class="notice-bar">
+        <span class="notice-label">★ 系统：</span>
+        <span class="notice-content">您请求的页面 rit001.htm 无法完整显示。错误代码：0x00000007。已用缓存残页代替。</span>
+    </div>
+
+    <div class="main-content">
+        <aside class="sidebar">
+            <div class="sidebar-box">
+                <div class="sidebar-title">文件属性</div>
+                <div class="sidebar-body">
+                    <div class="index-item"><span class="label">原名：</span><span class="value">rit001.bak</span></div>
+                    <div class="index-item"><span class="label">大小：</span><span class="value">? KB</span></div>
+                    <div class="index-item"><span class="label">修改：</span><span class="value">1964-03-??</span></div>
+                    <div class="index-item"><span class="label">扫描：</span><span class="value">失败 3 处</span></div>
+                    <div class="index-item"><span class="label">密级：</span><span class="value">—</span></div>
+                    <div class="index-item"><span class="label">打开次数：</span><span class="value" id="openCount" title="第七次会少一行">6</span></div>
+                </div>
+            </div>
+            <div class="sidebar-box">
+                <div class="sidebar-title">相关条目</div>
+                <div class="sidebar-body">
+                    <ul>
+                        <li><a href="chiwangsu.html">附件已损坏</a></li>
+                        <li><a href="chiwanghe.html">见水利杂卷</a></li>
+                        <li><a href="kouhao.html">残联下联</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <a href="index.html" class="back-btn">◀ 返回</a>
+            <h2>rit001.bak <span style="font-size:12px; color:#cc0000; font-weight:normal;">[预览不完整]</span></h2>
+
+            <div class="err">
+                <p>IE 无法显示该页的部分图像。</p>
+                <p>原因：文件 scan_03.tif、scan_07.tif 丢失。请联系县档案馆二楼。</p>
+            </div>
+
+            <h3>扫描件 01 / 扉页</h3>
+            <div class="scan">
+                <p>　　青溪　抄　不具名</p>
+                <p>　　勿入水质公报　　顾　圈</p>
+                <p>　　<span class="redact" title="把鼠标放上去">民俗附录</span>　　县志不收</p>
+            </div>
+
+            <h3>扫描件 02 / 中间那一行</h3>
+            <p>纸上只抄了两句。中间空着。空着的地方用指甲刮过。</p>
+            <div class="scan" style="text-align:center; font-family:'黑体', sans-serif; font-size:18px; letter-spacing:8px; color:#8a1515;">
+                <span id="line1" title="闸门上还有">水赤之日勿启</span><br>
+                <span class="redact" id="lineMid" title="老人不说">　　　　　　</span><br>
+                <span id="line3" title="残联下联">与天同寿</span>
+            </div>
+            <p>有人用铅笔在页边写：上句给闸。下句给联。<span class="ghost-ink">中间给河。</span></p>
+
+            <div class="img-fail" title="scan_03.tif">[ 图像 scan_03.tif 无法显示 ]</div>
+
+            <h3>扫描件 04 / 手势（助手笔记）</h3>
+            <p>字迹发洇。能辨认的只有这些。涂黑处把鼠标停住——扫描仪把墨块读成了色块，底下的字还在。</p>
+            <ul class="step-list">
+                <li><span class="step-n">其一</span>候水<span class="redact" title="赤">　</span>。闸落下。</li>
+                <li><span class="step-n">其二</span><span class="redact" title="二人">　　</span>同入槽。伞开。不让日晒到水。</li>
+                <li><span class="step-n">其三</span>对水称旧名。称<span class="redact" title="蟒">　</span>则不应。</li>
+                <li><span class="step-n">其四</span>同声。纸上只余「　寿」。前两字刮去。旁注：见<span class="mark-kouhao">口号</span>。</li>
+                <li><span class="step-n">其五</span>互换其名，至一人不答。</li>
+                <li><span class="step-n">其六</span>一人先上。留下的——<span class="redact" title="不要去认">　　　　</span></li>
+                <li><span class="step-n">其七</span><span class="missing" id="step7">（扫描失败）</span></li>
+            </ul>
+
+            <h3>扫描件 05 / 页边对读</h3>
+            <p>同一页左右两栏，左边是守则，右边被撕掉半截。残字如下。</p>
+            <div class="scan">
+                <p>左：禁止双人同时入水　　右：……须……人……不成</p>
+                <p>左：对外称赤蟒河　　　　右：……旧名……不答应</p>
+                <p>左：水赤之日勿启　　　　右：……留在闸槽……</p>
+                <p>左：禁止取饮　　　　　　右：……可……不可独……</p>
+                <p>左：采样瓶避光　　　　　右：……伞……不是雨具</p>
+            </div>
+            <p>撕口处有半个字：<span class="redact" title="返">　</span>。完整的那句不在本文件。</p>
+
+            <div class="img-fail" id="scan07" title="第七张。不要打开。">[ 图像 scan_07.tif 无法显示 ]</div>
+
+            <h3>批注（后加，圆珠笔）</h3>
+            <div class="scan">
+                <p>化学给不出式子。</p>
+                <p>手势比式子长。</p>
+                <p>桩上「不要」——不要什么</p>
+                <p class="blink">　　　　　　　　　　　　　　　　　　　停</p>
+            </div>
+
+            <div class="footnote">
+                <p>rit001.bak　|　缓存于 2006-03　|　校验：<span id="checksum" title="缺 7">FF FF FF 00</span></p>
+                <p>若您认为自己应看到完整页，请确认您打开的次数。</p>
+            </div>
+        </main>
+    </div>
+
+    <div class="footer">
+        Copyright © 2006 赤魍县人民政府 All Rights Reserved<br>
+        建议使用 IE 6.0 以上浏览器，800x600 分辨率浏览本站<br>
+        您是第 <span id="visitorNum" style="cursor:pointer;" title="缺的不是这一页">000,007</span> 位访客
+    </div>
+
+</div>
+<!--
+    完整七步不在预览里。
+    闸门六个字可以检索。
+    口号四个字是加密的。
+    第七步：老人去烧纸。桩上写着不要——
+    不要把第七步写进网页。
+-->
+<script>
+(function() {
+    var KEY = 'chiwang_rit_opens';
+    var n = 0;
+    try { n = parseInt(localStorage.getItem(KEY) || '0', 10) || 0; } catch (e) {}
+    n += 1;
+    try { localStorage.setItem(KEY, String(n)); } catch (e) {}
+
+    var countEl = document.getElementById('openCount');
+    if (countEl) countEl.textContent = n > 9 ? '9+' : String(n);
+
+    var step7 = document.getElementById('step7');
+    if (step7) {
+        step7.addEventListener('click', function() {
+            if (n >= 7) {
+                alert('纸上是空的。\n桩上不是。');
+            } else {
+                alert('图像丢失。\n错误代码：0x00000007');
+            }
+        });
+    }
+
+    var scan07 = document.getElementById('scan07');
+    if (scan07) {
+        scan07.addEventListener('click', function() {
+            alert('scan_07.tif\n\n（空文件）\n\n修改日期：1964-03');
+        });
+    }
+
+    var vis = document.getElementById('visitorNum');
+    if (vis) {
+        vis.addEventListener('click', function() {
+            var a = prompt('校验码缺最后一位。\n\n0x0000000_');
+            if (a === null) return;
+            if (String(a).replace(/\s+/g, '') === '7') {
+                alert('第七步不在这张图上。\n去闸门。');
+            } else {
+                alert('校验失败。');
+            }
+        });
+    }
+})();
+</script>
+</body>
+</html>
