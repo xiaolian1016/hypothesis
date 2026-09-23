@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>拷贝资料 - 赤魍县人民政府官方网站</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e8edf3;
+            font-family: "宋体", sans-serif;
+            font-size: 12px;
+            color: #333;
+        }
+        a { color: #1c55a1; text-decoration: none; }
+        a:hover { color: #cc0000; }
+
+        .wrap {
+            width: 560px;
+            margin: 40px auto;
+            background: #fff;
+            border: 1px solid #a8b9d0;
+            padding: 24px 28px 32px 28px;
+        }
+        h1 {
+            font-size: 16px;
+            font-family: "黑体", sans-serif;
+            color: #1c55a1;
+            margin: 0 0 8px 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+        .hint {
+            color: #888;
+            line-height: 20px;
+            margin-bottom: 18px;
+        }
+        .q {
+            margin-bottom: 16px;
+        }
+        .q label {
+            display: block;
+            margin-bottom: 6px;
+            line-height: 20px;
+            color: #333;
+        }
+        .q input {
+            width: 100%;
+            box-sizing: border-box;
+            height: 26px;
+            border: 1px solid #a8b9d0;
+            padding: 0 8px;
+            font-size: 12px;
+            font-family: "宋体", sans-serif;
+        }
+        .q input:focus { outline: none; border-color: #1c55a1; }
+        .q.wrong input { border-color: #cc0000; background: #fff8f8; }
+
+        button {
+            height: 28px;
+            padding: 0 22px;
+            background: #0e3a7a;
+            color: #fff;
+            border: none;
+            font-size: 12px;
+            font-family: "宋体", sans-serif;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+        button:hover { background: #cc0000; }
+
+        .msg {
+            display: none;
+            margin-top: 16px;
+            padding: 10px 12px;
+            line-height: 22px;
+        }
+        .msg.fail {
+            display: block;
+            background: #fff0f0;
+            border: 1px solid #e0a0a0;
+            color: #cc0000;
+        }
+        .msg.ok {
+            display: block;
+            background: #f0fff0;
+            border: 1px solid #8c8;
+            color: #060;
+            font-size: 14px;
+            font-family: "黑体", sans-serif;
+            text-align: center;
+            letter-spacing: 2px;
+            padding: 18px 12px;
+        }
+        .back { display: block; margin-top: 18px; font-size: 12px; }
+        .deny {
+            text-align: center;
+            padding: 40px 0;
+            color: #888;
+            line-height: 24px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap" id="panel">
+    <h1>拷贝资料</h1>
+    <p class="hint">核验六题，全部正确后方可写入缓存。答案以站内档案、检索与残卷为准，勿加标点与空格。</p>
+    <form id="copyForm">
+        <div class="q">
+            <label>1. 赤魍县首任县长就任口号（四字）</label>
+            <input type="text" id="q1" autocomplete="off" />
+        </div>
+        <div class="q">
+            <label>2. 渠首闸门内侧朱书（六字）</label>
+            <input type="text" id="q2" autocomplete="off" />
+        </div>
+        <div class="q">
+            <label>3. 检索「李慧芳」时，提示「我是谁」的答案</label>
+            <input type="text" id="q3" autocomplete="off" />
+        </div>
+        <div class="q">
+            <label>4. 2006年3月15日青溪浅滩无名男尸口袋中的物品</label>
+            <input type="text" id="q4" autocomplete="off" />
+        </div>
+        <div class="q">
+            <label>5. 赤魍河在对外宣传材料中的名称</label>
+            <input type="text" id="q5" autocomplete="off" />
+        </div>
+        <div class="q">
+            <label>6. 赵建国是谁</label>
+            <input type="text" id="q6" autocomplete="off" />
+        </div>
+        <button type="submit">核 验</button>
+    </form>
+    <div class="msg" id="msg"></div>
+    <a class="back" href="index.html">返回首页</a>
+</div>
+<script>
+(function() {
+    var FLAG = 'chiwang_visited_lihuifang';
+    var unlocked = false;
+    try { unlocked = localStorage.getItem(FLAG) === '1'; } catch (e) {}
+
+    if (!unlocked) {
+        document.getElementById('panel').innerHTML =
+            '<div class="deny">无权调阅此页。<br>请先查阅相关人事档案后再试。<br><br><a href="index.html">返回首页</a></div>';
+        return;
+    }
+
+    function norm(s) {
+        return (s || '').replace(/\s+/g, '').replace(/[。．.、，,]/g, '');
+    }
+
+    var form = document.getElementById('copyForm');
+    var msg = document.getElementById('msg');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var a1 = norm(document.getElementById('q1').value);
+        var a2 = norm(document.getElementById('q2').value);
+        var a3 = norm(document.getElementById('q3').value);
+        var a4 = norm(document.getElementById('q4').value);
+        var a5 = norm(document.getElementById('q5').value);
+
+        var a6 = norm(document.getElementById('q6').value);
+
+        var ok1 = a1 === '与天同寿';
+        var ok2 = a2 === '水赤之日勿启';
+        var ok3 = a3 === '林雨涵';
+        var ok4 = a4 === '折叠伞' || a4 === '黑色折叠伞' || a4 === '折叠雨伞' || a4 === '一把折叠雨伞' || a4 === '一把折叠伞';
+        var ok5 = a5 === '赤蟒河';
+        var ok6 = a6 === '范晨星';
+
+        var ids = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6'];
+        var oks = [ok1, ok2, ok3, ok4, ok5, ok6];
+        for (var i = 0; i < 6; i++) {
+            document.getElementById(ids[i]).parentNode.className = oks[i] ? 'q' : 'q wrong';
+        }
+
+        if (ok1 && ok2 && ok3 && ok4 && ok5 && ok6) {
+            form.style.display = 'none';
+            var backLink = document.querySelector('.back');
+            if (backLink) backLink.style.display = 'none';
+            msg.className = 'msg ok';
+            msg.textContent = '您已成功拷贝所有数据';
+            try { localStorage.setItem('chiwang_copy_done', '1'); } catch (err) {}
+            setTimeout(function() {
+                window.location.replace('ending.html');
+            }, 1600);
+        } else {
+            msg.className = 'msg fail';
+            msg.textContent = '核验未通过。错误项已标红。';
+        }
+    });
+})();
+</script>
+</body>
+</html>

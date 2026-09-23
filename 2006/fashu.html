@@ -196,7 +196,8 @@
             cursor: default;
             user-select: none;
         }
-        .redact:hover {
+        html.is-logged .redact:hover,
+        body.is-logged .redact:hover {
             background: #eee;
             color: #8a1515;
             user-select: text;
@@ -280,7 +281,80 @@
         @keyframes blink {
             50% { opacity: 0; }
         }
+
+        .view-full { display: none; }
+        html.is-logged .view-broken,
+        body.is-logged .view-broken { display: none; }
+        html.is-logged .view-full,
+        body.is-logged .view-full { display: block; }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        .data-table th {
+            background-color: #eaf0f8;
+            border: 1px solid #a8b9d0;
+            padding: 6px 10px;
+            text-align: left;
+            font-weight: bold;
+            color: #1c55a1;
+            white-space: nowrap;
+        }
+        .data-table td {
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+            vertical-align: top;
+        }
+        .data-table tr:nth-child(even) { background-color: #f8fafd; }
+
+        .verse {
+            text-align: center;
+            font-size: 22px;
+            font-family: "黑体", sans-serif;
+            color: #8a1515;
+            letter-spacing: 6px;
+            margin: 18px 0;
+            line-height: 36px;
+        }
+        .verse .small {
+            display: block;
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: #888;
+            font-family: "宋体", sans-serif;
+            margin-top: 6px;
+        }
+        .stamp {
+            background-color: #fff8e6;
+            border: 1px solid #e0c070;
+            padding: 10px 15px;
+            margin: 12px 0 16px 0;
+            font-size: 12px;
+            line-height: 22px;
+            color: #665500;
+        }
+        .stamp p { text-indent: 0; margin: 4px 0; color: #665500; }
+        .stamp strong { color: #cc0000; }
+        .quote-box {
+            background: #fafafa;
+            border-left: 3px solid #8a2a2a;
+            padding: 8px 14px;
+            margin: 12px 0;
+            color: #555;
+            font-size: 12px;
+            line-height: 22px;
+        }
+        .quote-box p { text-indent: 0; margin: 4px 0; }
     </style>
+    <script>
+    try {
+        var _u = JSON.parse(localStorage.getItem('chiwang_login_user') || 'null');
+        if (_u && _u.name) document.documentElement.className += ' is-logged';
+    } catch (e) {}
+    </script>
 </head>
 <body>
 <div class="container">
@@ -298,14 +372,18 @@
         <a href="contact.html">联系我们</a>
     </nav>
 
-    <div class="notice-bar">
+    <div class="notice-bar view-broken">
         <span class="notice-label">★ 系统：</span>
         <span class="notice-content">您请求的页面 rit001.htm 无法完整显示。错误代码：0x00000007。已用缓存残页代替。</span>
+    </div>
+    <div class="notice-bar view-full">
+        <span class="notice-label">★ 内部：</span>
+        <span class="notice-content">已用内部账号调阅原件。民俗残卷，观测组归档为「地方迷信材料」，未写入水质公报。</span>
     </div>
 
     <div class="main-content">
         <aside class="sidebar">
-            <div class="sidebar-box">
+            <div class="sidebar-box view-broken">
                 <div class="sidebar-title">文件属性</div>
                 <div class="sidebar-body">
                     <div class="index-item"><span class="label">原名：</span><span class="value">rit001.bak</span></div>
@@ -313,16 +391,28 @@
                     <div class="index-item"><span class="label">修改：</span><span class="value">1964-03-??</span></div>
                     <div class="index-item"><span class="label">扫描：</span><span class="value">失败 3 处</span></div>
                     <div class="index-item"><span class="label">密级：</span><span class="value">—</span></div>
-                    <div class="index-item"><span class="label">打开次数：</span><span class="value" id="openCount" title="第七次会少一行">6</span></div>
+                    <div class="index-item"><span class="label">权限：</span><span class="value">访客</span></div>
+                </div>
+            </div>
+            <div class="sidebar-box view-full">
+                <div class="sidebar-title">残卷速记</div>
+                <div class="sidebar-body">
+                    <div class="index-item"><span class="label">卷宗：</span><span class="value">CW-RIT-001</span></div>
+                    <div class="index-item"><span class="label">公开口径：</span><span class="value">禁令 / 口诀</span></div>
+                    <div class="index-item"><span class="label">择日：</span><span class="value">冬至赤水</span></div>
+                    <div class="index-item"><span class="label">器物：</span><span class="value">折叠伞</span></div>
+                    <div class="index-item"><span class="label">人数：</span><span class="value">二人</span></div>
+                    <div class="index-item"><span class="label">调阅人：</span><span class="value" id="readerName">内部</span></div>
                 </div>
             </div>
             <div class="sidebar-box">
                 <div class="sidebar-title">相关条目</div>
                 <div class="sidebar-body">
                     <ul>
-                        <li><a href="chiwangsu.html">附件已损坏</a></li>
-                        <li><a href="chiwanghe.html">见水利杂卷</a></li>
-                        <li><a href="kouhao.html">残联下联</a></li>
+                        <li><a href="chiwangsu.html">赤魍素鉴定草稿</a></li>
+                        <li><a href="chiwanghe.html">赤魍河科考纪要</a></li>
+                        <li><a href="kouhao.html">就任口号</a></li>
+                        <li><a href="login.html">内部登录</a></li>
                     </ul>
                 </div>
             </div>
@@ -330,55 +420,56 @@
 
         <main class="content-area">
             <a href="index.html" class="back-btn">◀ 返回</a>
+
+            <div class="view-broken">
             <h2>rit001.bak <span style="font-size:12px; color:#cc0000; font-weight:normal;">[预览不完整]</span></h2>
 
             <div class="err">
                 <p>IE 无法显示该页的部分图像。</p>
-                <p>原因：文件 scan_03.tif、scan_07.tif 丢失。请联系县档案馆二楼。</p>
+                <p>原因：文件 scan_03.tif、scan_07.tif 丢失。完整原件需内部账号调阅。</p>
             </div>
 
             <h3>扫描件 01 / 扉页</h3>
             <div class="scan">
                 <p>　　青溪　抄　不具名</p>
                 <p>　　勿入水质公报　　顾　圈</p>
-                <p>　　<span class="redact" title="把鼠标放上去">民俗附录</span>　　县志不收</p>
+                <p>　　<span class="redact">　　　　</span>　　县志不收</p>
             </div>
 
             <h3>扫描件 02 / 中间那一行</h3>
             <p>纸上只抄了两句。中间空着。空着的地方用指甲刮过。</p>
             <div class="scan" style="text-align:center; font-family:'黑体', sans-serif; font-size:18px; letter-spacing:8px; color:#8a1515;">
-                <span id="line1" title="闸门上还有">水赤之日勿启</span><br>
-                <span class="redact" id="lineMid" title="老人不说">　　　　　　</span><br>
-                <span id="line3" title="残联下联">与天同寿</span>
+                <span title="闸门上还有">水赤之日勿启</span><br>
+                <span class="redact">　　　　　　</span><br>
+                <span class="redact">　　　　</span>
             </div>
-            <p>有人用铅笔在页边写：上句给闸。下句给联。<span class="ghost-ink">中间给河。</span></p>
+            <p>有人用铅笔在页边写：上句给闸。下句给联。中间——<span class="ghost-ink">看不清</span>。</p>
 
-            <div class="img-fail" title="scan_03.tif">[ 图像 scan_03.tif 无法显示 ]</div>
+            <div class="img-fail">[ 图像 scan_03.tif 无法显示 ]</div>
 
             <h3>扫描件 04 / 手势（助手笔记）</h3>
-            <p>字迹发洇。能辨认的只有这些。涂黑处把鼠标停住——扫描仪把墨块读成了色块，底下的字还在。</p>
+            <p>字迹发洇。访客权限下涂黑不可还原。第七步扫描失败。</p>
             <ul class="step-list">
-                <li><span class="step-n">其一</span>候水<span class="redact" title="赤">　</span>。闸落下。</li>
-                <li><span class="step-n">其二</span><span class="redact" title="二人">　　</span>同入槽。伞开。不让日晒到水。</li>
-                <li><span class="step-n">其三</span>对水称旧名。称<span class="redact" title="蟒">　</span>则不应。</li>
-                <li><span class="step-n">其四</span>同声。纸上只余「　寿」。前两字刮去。旁注：见<span class="mark-kouhao">口号</span>。</li>
-                <li><span class="step-n">其五</span>互换其名，至一人不答。</li>
-                <li><span class="step-n">其六</span>一人先上。留下的——<span class="redact" title="不要去认">　　　　</span></li>
+                <li><span class="step-n">其一</span>候水<span class="redact">　</span>。闸落下。</li>
+                <li><span class="step-n">其二</span><span class="redact">　　</span>同入槽。伞开。……</li>
+                <li><span class="step-n">其三</span>对水称<span class="redact">　　</span>。称<span class="redact">　</span>则不应。</li>
+                <li><span class="step-n">其四</span>同声。纸上只余「　<span class="redact">　</span>」。前两字刮去。</li>
+                <li><span class="step-n">其五</span><span class="redact">　　　　　　　　</span></li>
+                <li><span class="step-n">其六</span>一人先上。留下的——<span class="redact">　　　　</span></li>
                 <li><span class="step-n">其七</span><span class="missing" id="step7">（扫描失败）</span></li>
             </ul>
 
             <h3>扫描件 05 / 页边对读</h3>
-            <p>同一页左右两栏，左边是守则，右边被撕掉半截。残字如下。</p>
+            <p>同一页左右两栏，左边是守则，右边被撕掉。残字无法校对。</p>
             <div class="scan">
                 <p>左：禁止双人同时入水　　右：……须……人……不成</p>
-                <p>左：对外称赤蟒河　　　　右：……旧名……不答应</p>
-                <p>左：水赤之日勿启　　　　右：……留在闸槽……</p>
+                <p>左：对外称赤蟒河　　　　右：……<span class="redact">　　</span>……不答应</p>
+                <p>左：水赤之日勿启　　　　右：……留在<span class="redact">　　</span>……</p>
                 <p>左：禁止取饮　　　　　　右：……可……不可独……</p>
                 <p>左：采样瓶避光　　　　　右：……伞……不是雨具</p>
             </div>
-            <p>撕口处有半个字：<span class="redact" title="返">　</span>。完整的那句不在本文件。</p>
 
-            <div class="img-fail" id="scan07" title="第七张。不要打开。">[ 图像 scan_07.tif 无法显示 ]</div>
+            <div class="img-fail" id="scan07">[ 图像 scan_07.tif 无法显示 ]</div>
 
             <h3>批注（后加，圆珠笔）</h3>
             <div class="scan">
@@ -389,8 +480,132 @@
             </div>
 
             <div class="footnote">
-                <p>rit001.bak　|　缓存于 2006-03　|　校验：<span id="checksum" title="缺 7">FF FF FF 00</span></p>
-                <p>若您认为自己应看到完整页，请确认您打开的次数。</p>
+                <p>rit001.bak　|　缓存于 2006-03　|　校验：FF FF FF 00</p>
+                <p>完整原件不在访客缓存中。请使用内部登录后重新打开本页。</p>
+            </div>
+            </div>
+
+            <div class="view-full">
+            <h2>赤水仪轨残卷 <span style="font-size:12px; color:#1c55a1; font-weight:normal;">[原件已调出]</span></h2>
+
+            <div class="stamp">
+                <p><strong>调阅说明：</strong>本卷不是化学鉴定。观测组在青溪村抄到一套「用水」的说法，与公报中的接触守则几乎句句相反。顾清禾批：「勿入 CW-MAT-003。作民俗附录。」1987 年新修县志未收。</p>
+            </div>
+
+            <h3>一、残句</h3>
+            <div class="verse">
+                水赤之日勿启<br>
+                与天同寿
+                <span class="small">上句在闸门。下句在县衙残联。中间那一句，老人不说。</span>
+            </div>
+            <p>沿岸口诀只肯说到一半：<strong>蟒给人看，魍给河看。</strong> 下一句问到就散场。观测组有人补记过「要对河称旧名」，未署名。</p>
+
+            <h3>二、用法与禁令对照</h3>
+            <p>公报写的是「不要做」。残卷写的是「要这样做」。同一套动作，两份档案。</p>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width:90px;">项</th>
+                        <th>观测组守则（CW-MAT-003）</th>
+                        <th>残卷所记</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>择日</td>
+                        <td>水色转赤即视为窗口，尽快离开。</td>
+                        <td>须待冬至前后，或无雨而水自涨之夜。白日见光则「不成」。</td>
+                    </tr>
+                    <tr>
+                        <td>闸门</td>
+                        <td><span class="mark-qushou">渠首</span>旧题不得恢复。水赤之日勿启。</td>
+                        <td>闸门须落下。把赤水留在闸槽里，不让它顺流散掉。六字是给守闸人的，不是给灌区的。</td>
+                    </tr>
+                    <tr>
+                        <td>人数</td>
+                        <td>禁止双人同时入水。</td>
+                        <td>必须两人。一人「不成」。岸上第三人「看不见」。</td>
+                    </tr>
+                    <tr>
+                        <td>称谓</td>
+                        <td>对外称赤蟒河。</td>
+                        <td>对水只称旧名。称新名则「河不答应」。</td>
+                    </tr>
+                    <tr>
+                        <td>口诀</td>
+                        <td>无此项。</td>
+                        <td>对水宣读就任<span class="mark-kouhao">口号</span>里加密的那四个字。残联下联与之同文。上联已佚，残卷注：「有上联则双返，无上联则只去不回。」</td>
+                    </tr>
+                    <tr>
+                        <td>器物</td>
+                        <td>采样瓶避光、蜡封。</td>
+                        <td>黑伞遮光。赤水见日即灰。交接清单里那一把，不是雨具。</td>
+                    </tr>
+                    <tr>
+                        <td>应答</td>
+                        <td>2005-12-21：两村民落水后互叫对方的名字，一刻钟后分开。草稿未写完。</td>
+                        <td>须互换称呼，直到其中一人不再应答。不应答的那个，岸上的人会以为他「还在」。</td>
+                    </tr>
+                    <tr>
+                        <td>饮用</td>
+                        <td>禁止赤水窗口取饮、取灌。</td>
+                        <td>旧志有「饮赤」一句。残卷旁注：可饮，不可独饮。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>三、抄件顺序</h3>
+            <p>青溪村一位不愿具名的人按手势比划，观测助手写成七步。第七步原抄件为空，调阅后据桩刻补入。</p>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width:44px;">步</th>
+                        <th>抄件</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>候水色转赤。闸门落下。</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>二人同入闸槽。伞张开，不让日光照到水。</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>对水称「赤魍」。不得称蟒。</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>同声念四字。残卷只写「　寿」二字，前两字被刮。核对其它卷，应即加密<span class="mark-kouhao">口号</span>。</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>互换姓名，反复应答。</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>一人先上岸。留下的那个，不要去认。</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>原抄空白。桩刻残句：「不要——」。老人说到此处去烧纸。</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>四、观测组批注</h3>
+            <div class="quote-box">
+                <p>顾清禾 2006-02-11：守则里每一条「禁止」，都能在这套手势里找到对应的「必须」。化学鉴定给不出分子式。手势比分子式完整。</p>
+                <p>沈怀德桩刻「不要——」或即第七步。不要什么，他没写完。</p>
+            </div>
+            <p>本卷不解释手势的结果。人事档案、失踪台账、浅滩通报与冬至日期重叠之处，请自行对照。观测组对外口径仍是：铁锰胶体，不宜饮用，禁止双人入水。</p>
+
+            <div class="footnote">
+                <p>卷宗编号：CW-RIT-001　|　附录于 CW-MAT-003　|　整理：观测组民俗摘录　|　2006-03</p>
+                <p>缺页：残联上联、口诀下句。第七步据桩刻补入，非原抄。</p>
+            </div>
             </div>
         </main>
     </div>
@@ -402,52 +617,40 @@
     </div>
 
 </div>
-<!--
-    完整七步不在预览里。
-    闸门六个字可以检索。
-    口号四个字是加密的。
-    第七步：老人去烧纸。桩上写着不要——
-    不要把第七步写进网页。
--->
 <script>
 (function() {
-    var KEY = 'chiwang_rit_opens';
-    var n = 0;
-    try { n = parseInt(localStorage.getItem(KEY) || '0', 10) || 0; } catch (e) {}
-    n += 1;
-    try { localStorage.setItem(KEY, String(n)); } catch (e) {}
+    var user = null;
+    try {
+        user = JSON.parse(localStorage.getItem('chiwang_login_user') || 'null');
+    } catch (e) {
+        user = null;
+    }
 
-    var countEl = document.getElementById('openCount');
-    if (countEl) countEl.textContent = n > 9 ? '9+' : String(n);
+    if (user && user.name) {
+        document.documentElement.className += (document.documentElement.className.indexOf('is-logged') === -1 ? ' is-logged' : '');
+        document.body.className += ' is-logged';
+        var nameEl = document.getElementById('readerName');
+        if (nameEl) nameEl.textContent = user.name;
+        document.title = '赤水仪轨残卷（内部） - 赤魍县人民政府官方网站';
+        return;
+    }
 
     var step7 = document.getElementById('step7');
     if (step7) {
         step7.addEventListener('click', function() {
-            if (n >= 7) {
-                alert('纸上是空的。\n桩上不是。');
-            } else {
-                alert('图像丢失。\n错误代码：0x00000007');
-            }
+            alert('图像丢失。\n错误代码：0x00000007\n\n完整原件需内部账号调阅。');
         });
     }
-
     var scan07 = document.getElementById('scan07');
     if (scan07) {
         scan07.addEventListener('click', function() {
-            alert('scan_07.tif\n\n（空文件）\n\n修改日期：1964-03');
+            alert('scan_07.tif\n\n（空文件）\n\n请登录后重新打开本页。');
         });
     }
-
     var vis = document.getElementById('visitorNum');
     if (vis) {
         vis.addEventListener('click', function() {
-            var a = prompt('校验码缺最后一位。\n\n0x0000000_');
-            if (a === null) return;
-            if (String(a).replace(/\s+/g, '') === '7') {
-                alert('第七步不在这张图上。\n去闸门。');
-            } else {
-                alert('校验失败。');
-            }
+            alert('校验失败。访客缓存不包含原件。');
         });
     }
 })();

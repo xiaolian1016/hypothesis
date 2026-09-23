@@ -239,6 +239,22 @@
             text-align: justify;
         }
 
+        .copy-btn {
+            display: none;
+            margin: 0 auto 20px auto;
+            height: 32px;
+            padding: 0 28px;
+            background: #0e3a7a;
+            color: #fff;
+            border: none;
+            font-size: 13px;
+            font-family: "宋体", sans-serif;
+            letter-spacing: 3px;
+            cursor: pointer;
+        }
+        .copy-btn.show { display: block; }
+        .copy-btn:hover { background: #cc0000; }
+
         /* ================= 页脚 ================= */
         .footer {
             text-align: center;
@@ -319,6 +335,8 @@
         <main class="content-area">
             <h2>首页</h2>
 
+            <button type="button" class="copy-btn" id="copyBtn">拷贝资料</button>
+
             <p>赤魍县位于本省西南部山区，地势西北高、东南低。全县辖5个镇、3个乡，共有行政村48个，社区居委会6个。县城驻地为城关镇，是全县政治、经济、文化中心。</p>
 
             <p>近年来，赤魍县依托丰富的自然资源和历史文化遗存，大力发展生态旅游与特色农业。境内拥有国家级自然保护区一处，省级风景名胜区两处。乡镇建设日新月异，基础设施不断完善，已实现村村通公路、通宽带等网络。</p>
@@ -386,6 +404,18 @@
 
     renderLoginStatus();
 
+    try {
+        if (localStorage.getItem('chiwang_visited_lihuifang') === '1') {
+            var copyBtn = document.getElementById('copyBtn');
+            if (copyBtn) {
+                copyBtn.className = 'copy-btn show';
+                copyBtn.addEventListener('click', function() {
+                    window.location.href = 'kaobei.html';
+                });
+            }
+        }
+    } catch (e) {}
+
     function showSearchPanel() {
         searchPanel.classList.add('show');
         try { localStorage.setItem(SEARCH_UNLOCK_KEY, '1'); } catch (e) {}
@@ -426,6 +456,10 @@
         {
             keywords: ['范晨星'],
             page: 'fanchenxing.html'
+        },
+        {
+            keywords: ['录音', '磁带', 'C-60'],
+            page: 'luyin.html'
         },
         {
             keywords: ['赤魍河'],

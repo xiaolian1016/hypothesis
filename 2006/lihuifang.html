@@ -548,6 +548,9 @@
     }
     setTimeout(corruptRound, 1800);
     try {
+        localStorage.setItem('chiwang_visited_lihuifang', '1');
+    } catch (e) {}
+    try {
         var user = JSON.parse(localStorage.getItem('chiwang_login_user') || 'null');
         if (user && user.name) {
             var els = document.querySelectorAll('.need-login-phrase');
